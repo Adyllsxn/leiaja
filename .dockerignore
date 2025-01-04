@@ -1,0 +1,21 @@
+# Ignorar pastas de configuração locais
+.vscode/
+.git/
+.gitignore
+
+# Ignorar artefatos de build
+bin/
+obj/
+dist/
+
+# Ignorar documentação e arquivos desnecessários
+docs/
+README.md
+LICENSE
+
+# Ignorar arquivos temporários e logs
+*.tmp
+*.log
+*.DS_Store
+Thumbs.db
+*.bak
