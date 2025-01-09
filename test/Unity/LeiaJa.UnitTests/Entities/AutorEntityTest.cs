@@ -6,7 +6,7 @@ public class AutorEntityTest
     public void CriarAutor_NaoCriaAutorSemID()
     {
         var exception = Assert.Throws<DomainExceptionValidation>(() => new AutorEntity(0, "Test", "Test"));
-        Assert.Equal("O ID Do Autor Deve Ser Positivo.", exception.Message);
+        Assert.Equal("O ID Do Autor Deve Ser Maior Que Zero.", exception.Message);
     }
     #endregion
 

@@ -11,7 +11,7 @@ public class CategoriaController : ControllerBase
     }
     #endregion
 
-    #region GET ALL CATEGORIA
+    #region GET ALL CATEGORIA 
     #endregion
 
     #region GET CATEGORIA BY ID

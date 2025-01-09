@@ -31,13 +31,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{B85C3123-9
 	ProjectSection(SolutionItems) = preProject
 		Arquitetura.md = Arquitetura.md
 		API.md = API.md
-		GuiaDeInstalação.md  = GuiaDeInstalação.md
+		GuiaDeInstalação.md = GuiaDeInstalação.md
 		ROADMAP.md = ROADMAP.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{1CF97269-5CD5-42E4-8257-0DAB574902AE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{047ED154-E426-4777-A7A9-F912991CC422}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeiaJa.IntegrationTests", "test\Integration\LeiaJa.IntegrationTests\LeiaJa.IntegrationTests.csproj", "{9A146FAC-C1B5-4FB4-8123-141434BBC3F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeiaJa.IntegrationTests", "test\Integration\LeiaJa.IntegrationTests\LeiaJa.IntegrationTests.csproj", "{2B437275-3679-44F6-A547-57C7D0655A85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,10 +73,10 @@ Global
 		{1993127E-A086-404E-B7A4-012625238F3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1993127E-A086-404E-B7A4-012625238F3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1993127E-A086-404E-B7A4-012625238F3F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9A146FAC-C1B5-4FB4-8123-141434BBC3F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A146FAC-C1B5-4FB4-8123-141434BBC3F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A146FAC-C1B5-4FB4-8123-141434BBC3F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A146FAC-C1B5-4FB4-8123-141434BBC3F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B437275-3679-44F6-A547-57C7D0655A85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B437275-3679-44F6-A547-57C7D0655A85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B437275-3679-44F6-A547-57C7D0655A85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B437275-3679-44F6-A547-57C7D0655A85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,7 +92,7 @@ Global
 		{D707D418-3C99-47DC-8B0A-46ACD4A07C8A} = {1DF64AB5-F686-481B-BEF7-FCB9FB899071}
 		{0FD79E2E-1681-449B-9DA4-256CE8CF0B71} = {D707D418-3C99-47DC-8B0A-46ACD4A07C8A}
 		{1993127E-A086-404E-B7A4-012625238F3F} = {16C623A6-31E6-45C4-9F05-0CC8B9BD866D}
-		{1CF97269-5CD5-42E4-8257-0DAB574902AE} = {1DF64AB5-F686-481B-BEF7-FCB9FB899071}
-		{9A146FAC-C1B5-4FB4-8123-141434BBC3F0} = {1CF97269-5CD5-42E4-8257-0DAB574902AE}
+		{047ED154-E426-4777-A7A9-F912991CC422} = {1DF64AB5-F686-481B-BEF7-FCB9FB899071}
+		{2B437275-3679-44F6-A547-57C7D0655A85} = {047ED154-E426-4777-A7A9-F912991CC422}
 	EndGlobalSection
 EndGlobal
