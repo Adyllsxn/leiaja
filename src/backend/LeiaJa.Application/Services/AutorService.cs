@@ -19,15 +19,15 @@ public class AutorService : IAutorService
         try
         {
             var autor = _mapper.Map<AutorEntity>(autorDTO);
-            var createautor = await _repository.CreateAutorAsync(autor);
-            if(createautor == null)
+            var createAutor = await _repository.CreateAutorAsync(autor);
+            if(createAutor == null)
             {
                 response.Message = "Falha Ao Salvar O Autor. Os Parâmetros Podem Estar Inválidos.";
                 response.StatusCode = 400;
                 return response;
             }
 
-            response.Data = _mapper.Map<List<AutorDTO>>(createautor);
+            response.Data = _mapper.Map<List<AutorDTO>>(createAutor);
             response.Message = "O Autor Foi Salvo Com Sucesso";
             response.StatusCode = 201;
             return response;
@@ -47,14 +47,14 @@ public class AutorService : IAutorService
         ResponseModel<AutorDTO> response = new();
         try
         {
-            var deletadoAutor = await _repository.DeleteAutorAsync(autorId);
-            if(deletadoAutor == null)
+            var deleteAutor = await _repository.DeleteAutorAsync(autorId);
+            if(deleteAutor == null)
             {
                 response.Message = $"Nenhum Autor Encontrado Com O ID {autorId}.";
                 response.StatusCode = 404;
                 return response;
             }
-            response.Data = _mapper.Map<AutorDTO>(deletadoAutor);
+            response.Data = _mapper.Map<AutorDTO>(deleteAutor);
             response.Message = "O Autor Foi Deletado Com Sucesso.";
             response.StatusCode = 200;
             return response;
@@ -125,13 +125,13 @@ public class AutorService : IAutorService
     #endregion
     
     #region UPDATE AUTOR
-    public async Task<ResponseModel<AutorDTO>> UpdateAutorAsync(AutorDTO autor)
+    public async Task<ResponseModel<AutorDTO>> UpdateAutorAsync(AutorDTO autorDTO)
     {
         ResponseModel<AutorDTO> response = new();
         try
         {
-            var autorEntity = _mapper.Map<AutorEntity>(autor);
-            var updateAutor = await _repository.UpdateAutorAsync(autorEntity);
+            var autor = _mapper.Map<AutorEntity>(autorDTO);
+            var updateAutor = await _repository.UpdateAutorAsync(autor);
             if(updateAutor == null)
             {
                 response.Message = "Os Parâmetros Não Devem Ser Nulos Ou Vazios.";

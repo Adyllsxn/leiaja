@@ -11,6 +11,7 @@ public class SistemaRepository : ISistemaRepository
     {
         QuantidadeEntity quantidadeItens =  new  QuantidadeEntity();
         quantidadeItens.QtdAutor = await _context.Autores.CountAsync();
+        quantidadeItens.QtdCategoria = await _context.Categorias.CountAsync();
         return quantidadeItens;
     }
 }

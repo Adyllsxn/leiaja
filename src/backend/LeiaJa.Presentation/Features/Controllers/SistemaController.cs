@@ -15,7 +15,7 @@ public class SistemaController : ControllerBase
     {
         var quantidadeItemsDTO = await _service.GetQtdItems();
 
-        var result = $"Total de Autor: {quantidadeItemsDTO.QtdAutor} ";
+        var result = $" Total de Autor: {quantidadeItemsDTO.QtdAutor} \n Total de Categoria: {quantidadeItemsDTO.QtdCategoria}";
         return Ok(result);
     }
     #endregion

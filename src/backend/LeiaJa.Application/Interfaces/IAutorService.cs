@@ -3,7 +3,7 @@ public interface IAutorService
 {
     Task<ResponseModel<PagedList<AutorDTO>>> GetAllAutoresAsync(int pageNumber, int pageSize);
     Task<ResponseModel<List<AutorDTO>>> CreateAutorAsync(AutorPostDTO autorDTO);
-    Task<ResponseModel<AutorDTO>> UpdateAutorAsync(AutorDTO autor);
+    Task<ResponseModel<AutorDTO>> UpdateAutorAsync(AutorDTO autorDTO);
     Task<ResponseModel<AutorDTO>> DeleteAutorAsync(int autorId);
     Task<ResponseModel<AutorDTO>> GetAutorByIdAsync(int autorId);
 }

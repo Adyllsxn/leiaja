@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace LeiaJa.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class CREATEMIGRATION : Migration
+    public partial class CraeteMigration2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -122,6 +122,8 @@ namespace LeiaJa.Infrastructure.Migrations
                     Editora = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AnoPublicacao = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Edicao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Imagem = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Documento = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AutoresId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

@@ -12,106 +12,106 @@ public class AutoresController : ControllerBase
     #endregion
 
     #region GET ALL AUTORES
-        [HttpGet("GettAllAutores")]
-        public async Task<ActionResult> GetAutores([FromQuery]PaginationParams paginationParams)
+    [HttpGet("GetAutores")]
+    public async Task<ActionResult> GetAutores([FromQuery]PaginationParams paginationParams)
+    {
+        try
         {
-            try
+            var autores = await _service.GetAllAutoresAsync(paginationParams.PageNumber, paginationParams.PageSize);
+            if(autores == null || autores.Data == null)
             {
-                var autores = await _service.GetAllAutoresAsync(paginationParams.PageNumber, paginationParams.PageSize);
-                if(autores == null || autores.Data == null)
-                {
-                    return NotFound("Não Foram Encontrados Nenhum Autor");
-                }
-                Response.AddPaginationHeader(new PaginationHeader(autores.Data.CurrentPage, autores.Data.PageSize, autores.Data.TotalCount, autores.Data.TotalPages));
-                return Ok(autores);
+                return NotFound("Não Foram Encontrados Nenhum Autor");
             }
-            catch
-            {
-                return Problem("Ocorreu um erro ao processar a solicitação. Tente novamente mais tarde.");
-            }
+            Response.AddPaginationHeader(new PaginationHeader(autores.Data.CurrentPage, autores.Data.PageSize, autores.Data.TotalCount, autores.Data.TotalPages));
+            return Ok(autores);
         }
+        catch
+        {
+            return Problem("Ocorreu um erro ao processar a solicitação. Tente novamente mais tarde.");
+        }
+    }
     #endregion
 
     #region GET AUTOR BY ID
-        [HttpGet("GetAutorById")]
-        public async Task<ActionResult> GetAutor(int autorId)
+    [HttpGet("GetAutorByID")]
+    public async Task<ActionResult> GetAutorByID(int autorId)
+    {
+        try
         {
-            try
+            if(autorId <= 0)
             {
-                if(autorId <= 0)
-                {
-                    return BadRequest("Não Deve Ser Negativa ou Zero");
-                }
-                var autor = await _service.GetAutorByIdAsync(autorId);
+                return BadRequest("Não Deve Ser Negativa ou Zero");
+            }
+            var autor = await _service.GetAutorByIdAsync(autorId);
 
-                if(autor == null)
-                {
-                    return NotFound("Não Foi Encontrado");
-                }
-                return Ok(autor);
-            }
-            catch 
+            if(autor == null)
             {
-                return Problem("Ocorreu um erro ao processar a solicitação. Tente novamente mais tarde.");
+                return NotFound("Não Foi Encontrado");
             }
-            
+            return Ok(autor);
         }
+        catch 
+        {
+            return Problem("Ocorreu um erro ao processar a solicitação. Tente novamente mais tarde.");
+        }
+        
+    }
     #endregion
 
     #region CREATE AUTOR
-        [HttpPost("CreateAutor")]
-        public async Task<ActionResult> CreateAsync(AutorPostDTO autorPostDTO)
+    [HttpPost("CreateAutor")]
+    public async Task<ActionResult> CreateAutor(AutorPostDTO autorPostDTO)
+    {
+        try
         {
-            try
-            {
-                if(autorPostDTO == null)
-                    return BadRequest("Não deve ser vazia");
+            if(autorPostDTO == null)
+                return BadRequest("Não deve ser vazia");
 
-                var autor = await _service.CreateAutorAsync(autorPostDTO);
-                return Ok(autor);
-            }
-            catch
-            {
-                return Problem("Ocorreu um erro ao salvar. Tente novamente mais tarde.");
-            }
+            var autor = await _service.CreateAutorAsync(autorPostDTO);
+            return Ok(autor);
         }
+        catch
+        {
+            return Problem("Ocorreu um erro ao salvar. Tente novamente mais tarde.");
+        }
+    }
     #endregion
 
     #region UPDATE AUTOR
-        [HttpPut("updateAutor")]
-        public async Task<ActionResult> UpdateAutor(AutorDTO autorDTO)
+    [HttpPut("UpdateAutor")]
+    public async Task<ActionResult> UpdateAutor(AutorDTO autorDTO)
+    {
+        try
         {
-            try
-            {
-                if(autorDTO == null)
-                    return BadRequest("Não deve ser nulo");
+            if(autorDTO == null)
+                return BadRequest("Não deve ser nulo");
 
-                var autor = await _service.UpdateAutorAsync(autorDTO);
-                return Ok(autor);
-            }
-            catch
-            {
-                return Problem("Ocorreu um erro ao aditar. Tente novamente mais tarde.");
-            }
+            var autor = await _service.UpdateAutorAsync(autorDTO);
+            return Ok(autor);
         }
+        catch
+        {
+            return Problem("Ocorreu um erro ao aditar. Tente novamente mais tarde.");
+        }
+    }
     #endregion
 
     #region DELETE AUTOR
-        [HttpDelete("deleteAutor")]
-        public async Task<ActionResult> DeleteAutor(int autorId)
+    [HttpDelete("DeleteAutor")]
+    public async Task<ActionResult> DeleteAutor(int autorId)
+    {
+        try
         {
-            try
-            {
-                if(autorId <= 0)
-                    return BadRequest("Não deve ser nulo ou Negativa");
-                    
-                var autor = await _service.DeleteAutorAsync(autorId);
-                return Ok(autor);
-            }
-            catch
-            {
-                return Problem("Ocorreu um erro ao deletar. Tente novamente mais tarde.");
-            }
+            if(autorId <= 0)
+                return BadRequest("Não deve ser nulo ou Negativa");
+                
+            var autor = await _service.DeleteAutorAsync(autorId);
+            return Ok(autor);
         }
+        catch
+        {
+            return Problem("Ocorreu um erro ao deletar. Tente novamente mais tarde.");
+        }
+    }
     #endregion
 }
