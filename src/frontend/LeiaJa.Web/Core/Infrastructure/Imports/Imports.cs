@@ -4,6 +4,5 @@
 #endregion
 
 #region Web
-    global using LeiaJa.Web;
     global using LeiaJa.Web.Core.Infrastructure.Extensions;
 #endregion
