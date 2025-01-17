@@ -20,7 +20,7 @@ public class AutorService : IAutorService
         {
             if(autorDTO == null)
             {
-                response.Message = "Falha Ao Salvar A Categoria. Os Parâmetros Podem Estar Inválidos.";
+                response.Message = "Os Parâmetros Não Devem Ser Nulos Ou Vazios.";
                 return response;
             }
             var autor = _mapper.Map<AutorEntity>(autorDTO);

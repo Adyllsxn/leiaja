@@ -17,6 +17,11 @@ public class CategoriaService : ICategoriaService
         ResponseModel<List<CategoriaDTO>> response = new();
         try
         {
+            if(categoriaPostDTO == null)
+            {
+                response.Message = "Os Parâmetros Não Devem Ser Nulos Ou Vazios.";
+                return response;
+            }
             var categoria = _mapper.Map<CategoriaEntity>(categoriaPostDTO);
             var createCategoria = await _repository.CreateCategoriaAsync(categoria);
             if(createCategoria == null)
@@ -46,6 +51,11 @@ public class CategoriaService : ICategoriaService
         ResponseModel<CategoriaDTO> response = new();
         try
         {
+            if(categoriaId <= 0)
+            {
+                response.Message = $"O ID Não Deve Ser Menor Ou Igual A Zero.";
+                return response;
+            }
             var deleteCategoria = await _repository.DeleteCategoriaAsync(categoriaId);
             if(deleteCategoria == null)
             {
@@ -100,7 +110,12 @@ public class CategoriaService : ICategoriaService
     {   
         ResponseModel<CategoriaDTO> response = new();
         try
-        {
+        { 
+            if(categoriaId <= 0)
+            {
+                response.Message = $"O ID Não Deve Ser Menor Ou Igual A Zero.";
+                return response;
+            }
             var categoria = await _repository.GetCategoriaByIdAsync(categoriaId);
             var categoriaDTO = _mapper.Map<CategoriaDTO>(categoria);
             if(categoriaDTO == null)
