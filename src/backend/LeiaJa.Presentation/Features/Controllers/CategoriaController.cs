@@ -13,7 +13,7 @@ public class CategoriaController : ControllerBase
     }
     #endregion
 
-    #region GET ALL CATEGORIA
+    #region GETS
     [HttpGet("GetCategorias")]
         public async Task<ActionResult> GetCategorias([FromQuery]PaginationParams paginationParams)
         {
@@ -34,7 +34,7 @@ public class CategoriaController : ControllerBase
         }
     #endregion
 
-    #region GET CATEGORIA BY ID
+    #region GETID
     [HttpGet("GetCategoriaById")]
         public async Task<ActionResult> GetCategoriaById(int categoriaId)
         {
@@ -60,7 +60,7 @@ public class CategoriaController : ControllerBase
         }
     #endregion
 
-    #region CREATE CATEGORIA
+    #region CREATE
     [HttpPost("CreateCategoria")]
         public async Task<ActionResult> CreateCategoria(CategoriaPostDTO categoriaPostDTO)
         {
@@ -79,7 +79,7 @@ public class CategoriaController : ControllerBase
         }
     #endregion
 
-    #region UPDATE CATEGORIA
+    #region UPDATE
     [HttpPut("UpdateAutor")]
     public async Task<ActionResult> UpdateCategoria(CategoriaDTO categoriaDTO)
     {
@@ -98,7 +98,7 @@ public class CategoriaController : ControllerBase
     }
     #endregion
 
-    #region DELETE CATEGORIA
+    #region DELETE
     [HttpDelete("DeleteAutor")]
     public async Task<ActionResult> DeleteCategoria(int categoriaId)
     {

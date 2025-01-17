@@ -11,20 +11,18 @@ public class CategoriaRepository : ICategoriaRepository
     }
     #endregion
     
-    #region CREATE CATEGORIA
+    #region CREATE
     public async Task<List<CategoriaEntity>> CreateCategoriaAsync(CategoriaEntity categoria)
     {
         try
         {
             if (categoria == null)
             {
-                throw new ArgumentNullException(nameof(categoria), "O ID Da Categoria Não Deve Ser Negativo Ou Zero.");
+                throw new ArgumentNullException(nameof(categoria), "Os Campos Não Devem Ser Vazios.");
             }
 
             await _context.Categorias.AddAsync(categoria);
-
             await _context.SaveChangesAsync();
-
             return await _context.Categorias.ToListAsync();
         }
         catch(Exception ex)
@@ -35,7 +33,7 @@ public class CategoriaRepository : ICategoriaRepository
     }
     #endregion
     
-    #region DELETE CATEGORIA
+    #region DELETE 
     public async Task<CategoriaEntity?> DeleteCategoriaAsync(int categoriaId)
     {
         try
@@ -63,7 +61,7 @@ public class CategoriaRepository : ICategoriaRepository
     }
     #endregion
 
-    #region GET ALL CATEGORIAS
+    #region GETS
     public async Task<PagedList<CategoriaEntity>> GetAllCategoriasAsync(int pageNumber, int pageSize)
     {
         try
@@ -84,7 +82,7 @@ public class CategoriaRepository : ICategoriaRepository
     }
     #endregion
 
-    #region GET CATEGORIA BY ID
+    #region GETID
     public async Task<CategoriaEntity?> GetCategoriaByIdAsync(int categoriaId)
     {
         try
@@ -93,7 +91,12 @@ public class CategoriaRepository : ICategoriaRepository
             {
                 throw new ArgumentOutOfRangeException(nameof(categoriaId), "O ID Da Categoria Não Deve Ser Negativo Ou Zero.");
             }
-            return await _context.Categorias.FirstOrDefaultAsync(x => x.Id == categoriaId);
+            var categoria = await _context.Categorias.FirstOrDefaultAsync(x => x.Id == categoriaId);
+            if (categoria == null)
+            {
+                throw new KeyNotFoundException("Categoria Não Foi Encontrado.");
+            }
+            return categoria;
         }
         catch(Exception ex)
         {
@@ -103,23 +106,22 @@ public class CategoriaRepository : ICategoriaRepository
     }
     #endregion
 
-    #region UPDATE CATEGORIA
+    #region UPDATE
     public async Task<CategoriaEntity> UpdateCategoriaAsync(CategoriaEntity categoria)
     {
         try
         {
             if(categoria == null)
+            {
                 throw new ArgumentNullException(nameof(categoria),"A Entidade Categoria Não Deve Ser Vazia Ou Nula.");
-
+            }
             _context.Categorias.Update(categoria);
             var result = await _context.SaveChangesAsync();
 
             if (result == 0)
             {
-                _logger.LogWarning($"Nenhuma Modificação Foi Realizada Ao Editar A Categoria Com ID {categoria.Id}.");
-                return null!;
+                throw new WarningException($"Nenhuma Modificação Foi Realizada Ao Editar A Categoria Com ID {categoria.Id}.");
             }
-            
             return categoria;
         }
         catch(Exception ex)

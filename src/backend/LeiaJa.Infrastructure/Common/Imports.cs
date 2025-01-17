@@ -1,5 +1,5 @@
 #region System Libs
-
+    global using System.ComponentModel;
 #endregion
 
 #region Microsoft Libs

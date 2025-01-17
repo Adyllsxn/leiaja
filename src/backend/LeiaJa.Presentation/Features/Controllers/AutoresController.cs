@@ -11,7 +11,7 @@ public class AutoresController : ControllerBase
     }
     #endregion
 
-    #region GET ALL AUTORES
+    #region GETS
     [HttpGet("GetAutores")]
     public async Task<ActionResult> GetAutores([FromQuery]PaginationParams paginationParams)
     {
@@ -32,7 +32,7 @@ public class AutoresController : ControllerBase
     }
     #endregion
 
-    #region GET AUTOR BY ID
+    #region GETID
     [HttpGet("GetAutorByID")]
     public async Task<ActionResult> GetAutorByID(int autorId)
     {
@@ -58,7 +58,7 @@ public class AutoresController : ControllerBase
     }
     #endregion
 
-    #region CREATE AUTOR
+    #region CREATE
     [HttpPost("CreateAutor")]
     public async Task<ActionResult> CreateAutor(AutorPostDTO autorPostDTO)
     {
@@ -77,7 +77,7 @@ public class AutoresController : ControllerBase
     }
     #endregion
 
-    #region UPDATE AUTOR
+    #region UPDATE
     [HttpPut("UpdateAutor")]
     public async Task<ActionResult> UpdateAutor(AutorDTO autorDTO)
     {
@@ -96,7 +96,7 @@ public class AutoresController : ControllerBase
     }
     #endregion
 
-    #region DELETE AUTOR
+    #region DELETE 
     [HttpDelete("DeleteAutor")]
     public async Task<ActionResult> DeleteAutor(int autorId)
     {

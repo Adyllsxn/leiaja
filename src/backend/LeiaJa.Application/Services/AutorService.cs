@@ -12,20 +12,19 @@ public class AutorService : IAutorService
     }
     #endregion
     
-    #region CREATE AUTOR
+    #region CREATE
     public async Task<ResponseModel<List<AutorDTO>>> CreateAutorAsync(AutorPostDTO autorDTO)
     {
         ResponseModel<List<AutorDTO>> response = new();
         try
         {
-            var autor = _mapper.Map<AutorEntity>(autorDTO);
-            var createAutor = await _repository.CreateAutorAsync(autor);
-            if(createAutor == null)
+            if(autorDTO == null)
             {
-                response.Message = "Falha Ao Salvar O Autor. Os Parâmetros Podem Estar Inválidos.";
-                response.StatusCode = 400;
+                response.Message = "Falha Ao Salvar A Categoria. Os Parâmetros Podem Estar Inválidos.";
                 return response;
             }
+            var autor = _mapper.Map<AutorEntity>(autorDTO);
+            var createAutor = await _repository.CreateAutorAsync(autor);
 
             response.Data = _mapper.Map<List<AutorDTO>>(createAutor);
             response.Message = "O Autor Foi Salvo Com Sucesso";
@@ -41,12 +40,17 @@ public class AutorService : IAutorService
     }
     #endregion
     
-    #region DELETE AUTOR
+    #region DELETE
     public async Task<ResponseModel<AutorDTO>> DeleteAutorAsync(int autorId)
     {
         ResponseModel<AutorDTO> response = new();
         try
         {
+            if(autorId <= 0)
+            {
+                response.Message = "O ID Não Deve Ser Menor Ou Igual A Zero.";
+                return response;
+            }
             var deleteAutor = await _repository.DeleteAutorAsync(autorId);
             if(deleteAutor == null)
             {
@@ -68,7 +72,7 @@ public class AutorService : IAutorService
     }
     #endregion
 
-    #region GET ALL AUTORES
+    #region GETS
     public async Task<ResponseModel<PagedList<AutorDTO>>> GetAllAutoresAsync(int pageNumber, int pageSize)
     {
         ResponseModel<PagedList<AutorDTO>> response = new();
@@ -96,12 +100,17 @@ public class AutorService : IAutorService
     }
     #endregion
     
-    #region GET AUTOR BY ID
+    #region GETID
     public async Task<ResponseModel<AutorDTO>> GetAutorByIdAsync(int autorId)
     {
         ResponseModel<AutorDTO> response = new();
         try
         {
+            if(autorId <= 0)
+            {
+                response.Message = "O ID Não Deve Ser Menor Ou Igual A Zero.";
+                return response;
+            }
             var autor = await _repository.GetAutorByIdAsync(autorId);
             var autorDTO = _mapper.Map<AutorDTO>(autor);
             if(autorDTO == null)
@@ -124,20 +133,27 @@ public class AutorService : IAutorService
     }
     #endregion
     
-    #region UPDATE AUTOR
+    #region UPDATE
     public async Task<ResponseModel<AutorDTO>> UpdateAutorAsync(AutorDTO autorDTO)
     {
         ResponseModel<AutorDTO> response = new();
         try
         {
-            var autor = _mapper.Map<AutorEntity>(autorDTO);
-            var updateAutor = await _repository.UpdateAutorAsync(autor);
-            if(updateAutor == null)
+            if(autorDTO == null)
             {
                 response.Message = "Os Parâmetros Não Devem Ser Nulos Ou Vazios.";
-                response.StatusCode = 400;
                 return response;
             }
+            var autor = _mapper.Map<AutorEntity>(autorDTO);
+            var updateAutor = await _repository.UpdateAutorAsync(autor);
+
+            if(updateAutor == null)
+            {
+                response.Message = "Não Exite.";
+                response.StatusCode = 404;
+                return response;
+            }
+            
             response.Data = _mapper.Map<AutorDTO>(updateAutor);
             response.Message = "Autor Editado Com Sucesso!";
             response.StatusCode = 200;

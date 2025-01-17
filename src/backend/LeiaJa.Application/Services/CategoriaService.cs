@@ -11,7 +11,7 @@ public class CategoriaService : ICategoriaService
     }
     #endregion
 
-    #region CRAETE CATEGORIA
+    #region CRAETE
     public async Task<ResponseModel<List<CategoriaDTO>>> CreateCategoriaAsync(CategoriaPostDTO categoriaPostDTO)
     {
         ResponseModel<List<CategoriaDTO>> response = new();
@@ -40,7 +40,7 @@ public class CategoriaService : ICategoriaService
     }
     #endregion
 
-    #region DELETE CATEGORIA
+    #region DELETE
     public async Task<ResponseModel<CategoriaDTO>> DeleteCategoriaAsync(int categoriaId)
     {
         ResponseModel<CategoriaDTO> response = new();
@@ -67,7 +67,7 @@ public class CategoriaService : ICategoriaService
     }
     #endregion
 
-    #region GET ALL CATEGORIA
+    #region GETS
     public async Task<ResponseModel<PagedList<CategoriaDTO>>> GetAllCategoriasAsync(int pageNumber, int pageSize)
     {
         ResponseModel<PagedList<CategoriaDTO>> response = new();
@@ -95,7 +95,7 @@ public class CategoriaService : ICategoriaService
     }
     #endregion
 
-    #region GET CATEGORIA BY ID
+    #region GETID
     public async Task<ResponseModel<CategoriaDTO>> GetCategoriaByIdAsync(int categoriaId)
     {   
         ResponseModel<CategoriaDTO> response = new();
@@ -123,18 +123,24 @@ public class CategoriaService : ICategoriaService
     }
     #endregion
 
-    #region UPDATE CATEGORIA
+    #region UPDATE 
     public async Task<ResponseModel<CategoriaDTO>> UpdateCategoriaAsync(CategoriaDTO categoriaDTO)
     {
         ResponseModel<CategoriaDTO> response = new();
         try
-        {
+        {   
+            if(categoriaDTO == null)
+            {
+                response.Message = "Os Parâmetros Não Devem Ser Nulos Ou Vazios.";
+                response.StatusCode = 400;
+                return response;
+            }
             var categoria = _mapper.Map<CategoriaEntity>(categoriaDTO);
             var updateCategoria = await _repository.UpdateCategoriaAsync(categoria);
             if(updateCategoria == null)
             {
-                response.Message = "Os Parâmetros Não Devem Ser Nulos Ou Vazios.";
-                response.StatusCode = 400;
+                response.Message = "Não Exite";
+                response.StatusCode = 404;
                 return response;
             }
             response.Data = _mapper.Map<CategoriaDTO>(updateCategoria);
