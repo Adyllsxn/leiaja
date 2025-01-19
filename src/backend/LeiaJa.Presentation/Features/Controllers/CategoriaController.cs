@@ -1,20 +1,18 @@
-using LeiaJa.Application.DTOs.Categoria;
-
 namespace LeiaJa.Presentation.Features.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 public class CategoriaController : ControllerBase
 {
-    #region CONFIGERATION
-    private readonly ICategoriaService _service;
-    public CategoriaController(ICategoriaService service)
-    {
-        _service = service;
-    }
-    #endregion
+    #region <Configuration>
+        private readonly ICategoriaService _service;
+        public CategoriaController(ICategoriaService service)
+        {
+            _service = service;
+        }
+    #endregion </Configuration>
 
-    #region GETS
-    [HttpGet("GetCategorias")]
+    #region <Get>
+        [HttpGet("GetCategorias")]
         public async Task<ActionResult> GetCategorias([FromQuery]PaginationParams paginationParams)
         {
             try
@@ -32,10 +30,10 @@ public class CategoriaController : ControllerBase
                 return Problem("Ocorreu um erro ao processar a solicitação. Tente novamente mais tarde.");
             }
         }
-    #endregion
+    #endregion </Get>
 
-    #region GETID
-    [HttpGet("GetCategoriaById")]
+    #region <GetId>
+        [HttpGet("GetCategoriaById")]
         public async Task<ActionResult> GetCategoriaById(int categoriaId)
         {
             try
@@ -58,10 +56,10 @@ public class CategoriaController : ControllerBase
             }
             
         }
-    #endregion
+    #endregion </GetId>
 
-    #region CREATE
-    [HttpPost("CreateCategoria")]
+    #region <Create>
+        [HttpPost("CreateCategoria")]
         public async Task<ActionResult> CreateCategoria(CategoriaPostDTO categoriaPostDTO)
         {
             try
@@ -77,44 +75,44 @@ public class CategoriaController : ControllerBase
                 return Problem("Ocorreu um erro ao salvar. Tente novamente mais tarde.");
             }
         }
-    #endregion
+    #endregion </Create>
 
-    #region UPDATE
-    [HttpPut("UpdateAutor")]
-    public async Task<ActionResult> UpdateCategoria(CategoriaDTO categoriaDTO)
-    {
-        try
+    #region <Update>
+        [HttpPut("UpdateAutor")]
+        public async Task<ActionResult> UpdateCategoria(CategoriaDTO categoriaDTO)
         {
-            if(categoriaDTO == null)
-                return BadRequest("Não deve ser nulo");
+            try
+            {
+                if(categoriaDTO == null)
+                    return BadRequest("Não deve ser nulo");
 
-            var categoria = await _service.UpdateCategoriaAsync(categoriaDTO);
-            return Ok(categoria);
+                var categoria = await _service.UpdateCategoriaAsync(categoriaDTO);
+                return Ok(categoria);
+            }
+            catch
+            {
+                return Problem("Ocorreu um erro ao aditar. Tente novamente mais tarde.");
+            }
         }
-        catch
-        {
-            return Problem("Ocorreu um erro ao aditar. Tente novamente mais tarde.");
-        }
-    }
-    #endregion
+    #endregion </Update>
 
-    #region DELETE
-    [HttpDelete("DeleteAutor")]
-    public async Task<ActionResult> DeleteCategoria(int categoriaId)
-    {
-        try
+    #region <Delete>
+        [HttpDelete("DeleteAutor")]
+        public async Task<ActionResult> DeleteCategoria(int categoriaId)
         {
-            if(categoriaId <= 0)
-                return BadRequest("Não deve ser nulo ou Negativa");
-                
-            var categoria = await _service.DeleteCategoriaAsync(categoriaId);
-            return Ok(categoria);
+            try
+            {
+                if(categoriaId <= 0)
+                    return BadRequest("Não deve ser nulo ou Negativa");
+                    
+                var categoria = await _service.DeleteCategoriaAsync(categoriaId);
+                return Ok(categoria);
+            }
+            catch
+            {
+                return Problem("Ocorreu um erro ao deletar. Tente novamente mais tarde.");
+            }
         }
-        catch
-        {
-            return Problem("Ocorreu um erro ao deletar. Tente novamente mais tarde.");
-        }
-    }
-    #endregion
+    #endregion </Delete>
 
 }

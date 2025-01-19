@@ -3,21 +3,24 @@ public static class DependecyInjection
 {
     public static IServiceCollection AddInfrastrusture(this IServiceCollection services, IConfiguration configuration)
     {
-        #region CONTROLLERS & APIEXPLORER
+        #region <Controllers>
             services.AddControllers();
-            services.AddEndpointsApiExplorer();
-        #endregion
+        #endregion </Controllers>
 
-        #region DBCONTEXT
+        #region <ApiExplorer>
+            services.AddEndpointsApiExplorer();
+        #endregion </ApiExplorer>
+
+        #region <ConnectioDb>
             var connectionSQLServer = configuration.GetConnectionString(InfrastructureConfiguration.DefaultSQLServer);
             services.AddDbContext<AppDbContext>(options =>{
                 options.UseSqlServer(connectionSQLServer,
                 b => b.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)
                 );
             });
-        #endregion
+        #endregion </ConnectioDb>
 
-        #region REPOSITORY
+        #region <Repositories>
             services.AddScoped<IAutorRepository, AutorRepository>();
             services.AddScoped<ISistemaRepository, SistemaRepository>();
             services.AddScoped<IProvinciaRepository, ProvinciaRepository>();
@@ -30,9 +33,9 @@ public static class DependecyInjection
             services.AddScoped<ILivroRepository, LivroRepository>();
             services.AddScoped<IEmprestimoRepository, EmprestimoRepository>();
             services.AddScoped<IGeneroRepository, GeneroRepository>();
-        #endregion
+        #endregion </Repositories>
 
-        #region SERVICE
+        #region <Services>
             services.AddScoped<IAutorService, AutorService>();
             services.AddScoped<ISistemaService, SistemaService>();
             services.AddScoped<IProvinciaService, ProvinciaService>();
@@ -45,11 +48,11 @@ public static class DependecyInjection
             services.AddScoped<ILivroService, LivroService>();
             services.AddScoped<IEmprestimoService, EmprestimoService>();
             services.AddScoped<IGeneroService, GeneroService>();
-        #endregion
+        #endregion </Services>
 
-        #region AUTOMAPPER
+        #region <AutoMapper>
             services.AddAutoMapper(typeof(DomainToDTOProfile));
-        #endregion
+        #endregion </AutoMapper>
 
         return services;
     }

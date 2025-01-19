@@ -1,5 +1,9 @@
-var builder = WebApplication.CreateBuilder(args);
-    builder.AddBuilderExtensions();
+#region <Builder>
+    var builder = WebApplication.CreateBuilder(args);
+        builder.AddBuilderExtensions();
+#endregion </Builder>
 
-var app = builder.Build();
-    app.AddAppExtensions();
+#region <App>
+    var app = builder.Build();
+        app.AddAppExtensions();
+#endregion </App>

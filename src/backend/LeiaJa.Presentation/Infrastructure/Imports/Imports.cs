@@ -1,22 +1,23 @@
-#region System Libs
+#region <System>
     global using System.ComponentModel.DataAnnotations;
     global using System.Text.Json;
-#endregion
+#endregion </System>
 
-#region Microsoft Libs
+#region <Microsoft>
     global using Microsoft.AspNetCore.Mvc;
-#endregion
+#endregion </Microsoft>
 
-#region Ioc Class
+#region <Ioc>
     global using LeiaJa.Ioc.DI;
-#endregion
+#endregion </Ioc>
 
-#region Presentation Class
+#region <Presentation>
     global using LeiaJa.Presentation.Infrastructure.Extensions;
     global using LeiaJa.Presentation.Domain.Pagination;
-#endregion
+#endregion </Presentation>
 
-#region Application Class
+#region <Application>
     global using LeiaJa.Application.Interfaces;
     global using LeiaJa.Application.DTOs.Autor;
-#endregion
+    global using LeiaJa.Application.DTOs.Categoria;
+#endregion </Application>

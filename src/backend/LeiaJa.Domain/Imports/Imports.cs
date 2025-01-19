@@ -1,10 +1,10 @@
-#region System Libs
+#region <System>
     global using System.Text.Json.Serialization;
-#endregion
+#endregion </System>
 
-#region Domain Class
+#region <Domain>
     global using LeiaJa.Domain.Entities.Base;
     global using LeiaJa.Domain.Validation;
     global using LeiaJa.Domain.Entities;
     global using LeiaJa.Domain.Pagination;
-#endregion
+#endregion </Domain>
