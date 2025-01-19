@@ -2,21 +2,14 @@ namespace LeiaJa.Web.Core.Features.Authentication
 {
     public partial class AuthenticationPage : ComponentBase
     {
-        #region Proprieties
-        public bool _authentication = false;
-        #endregion
+        #region <Proprieties>
+            public bool _authentication = false;
+        #endregion </Proprieties>
 
-        #region Services
-        #endregion
+        #region <Services>
+        #endregion </Services>
 
-        #region Methods
-        public void AuthenticationTrue()
-        {
-            if(!_authentication)
-            {
-                
-            }
-        }
-        #endregion
+        #region <Methods>
+        #endregion </Methods>
     }
 }

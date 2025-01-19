@@ -1,9 +1,9 @@
-#region Microsoft
+#region <Microsoft>
     global using Microsoft.AspNetCore.Components.Web;
     global using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
     global using Microsoft.AspNetCore.Components;
-#endregion
+#endregion </Microsoft>
 
-#region Web
+#region <Web>
     global using LeiaJa.Web.Core.Infrastructure.Extensions;
-#endregion
+#endregion </Web>
