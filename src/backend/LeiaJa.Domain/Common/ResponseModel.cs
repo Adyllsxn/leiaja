@@ -3,5 +3,5 @@ public class ResponseModel<T>
 {
     public T? Data { get; set; }
     public string? Message { get; set; }
-    public int StatusCode { get; set; } = DomainConfiguration.DefaultStatusCode;
+    public int StatusCode { get; set; } = StatusCodeModel.DefaultStatusCode;
 }

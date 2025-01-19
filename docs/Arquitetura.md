@@ -14,7 +14,7 @@ A estrutura do backend é organizada em várias camadas, com o objetivo de desac
    - Camada responsável pela apresentação da API. Contém os **Controllers** que gerenciam as requisições HTTP e retornam as respostas. Os controllers interagem com a camada de **Application** para aplicar a lógica de negócios.
    
 2. **LeiaJa.Application**:
-   - Contém a lógica de negócios do sistema. Aqui são implementados os casos de uso da aplicação. Ela depende das camadas **Domain** e **Infrastructure**, mas não deve depender diretamente da camada de apresentação (API).
+   - Contém a lógica de negócios do sistema. Ela depende das camadas **Domain** e **Infrastructure**, mas não deve depender diretamente da camada de apresentação (API).
 
 3. **LeiaJa.Domain**:
    - Representa o domínio do sistema, com entidades e regras de negócio. Não deve depender de outras camadas e deve ser o núcleo da aplicação.
@@ -34,26 +34,3 @@ O frontend é desenvolvido utilizando **Blazor WebAssembly (BlazorWASM)**, com u
 A comunicação entre o frontend e o backend é realizada via **API RESTful**. O backend expõe endpoints através dos **Controllers** e o frontend consome esses endpoints para exibir os dados para o usuário.
 
 ---
-
-### API.md
-
-```markdown
-# API - LeiaJa
-
-## Visão Geral
-
-A API do LeiaJa é construída utilizando **ASP.NET Core** com **Controllers**. A API permite a interação com o sistema para realizar operações de **empréstimo**, **devolução** de itens e **gerenciamento** de dados. 
-
-### Endpoints Principais
-
-#### 1. Autenticação
-
-- **POST /api/auth/login**  
-  Realiza o login e retorna um token JWT.
-
-  **Exemplo de Request Body**:
-  ```json
-  {
-    "username": "user1",
-    "password": "senha123"
-  }
