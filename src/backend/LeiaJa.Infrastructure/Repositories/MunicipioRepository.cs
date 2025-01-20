@@ -2,6 +2,13 @@ namespace LeiaJa.Infrastructure.Repositories;
 public class MunicipioRepository : IMunicipioRepository
 {
     #region <Configuartion>
+        private readonly AppDbContext _context;
+        private readonly ILogger<MunicipioEntity> _logger;
+        public MunicipioRepository(AppDbContext context, ILogger<MunicipioEntity> logger)
+        {
+            _context = context;
+            _logger = logger;
+        }
     #endregion </Configuartion>
     
     #region <Create>

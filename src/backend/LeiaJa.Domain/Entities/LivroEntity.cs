@@ -14,7 +14,7 @@ public sealed class LivroEntity : EntityBase
     public CategoriaEntity Categoria { get; set; } = null!;
 
     [JsonIgnore]
-    public AutorEntity Autores { get; set; } = null!;
+    public AutorEntity Autor { get; set; } = null!;
 
     [JsonIgnore]
     public ICollection<EmprestimoEntity> Emprestimos { get; set; } = null!;
@@ -49,6 +49,9 @@ public sealed class LivroEntity : EntityBase
 
         DomainExceptionValidation.When(string.IsNullOrEmpty(editora), "A Editora É Obrigatória.");
         DomainExceptionValidation.When(editora.Length > 100, "A Editora Não Pode Ter Mais De 100 Caracteres.");
+
+        DomainExceptionValidation.When(string.IsNullOrEmpty(edicao), "A Edição É Obrigatória.");
+        DomainExceptionValidation.When(edicao.Length > 100, "A Edição Não Pode Ter Mais De 100 Caracteres.");
 
         DomainExceptionValidation.When(string.IsNullOrEmpty(imagem), "A Imagem É Obrigatório.");
         DomainExceptionValidation.When(edicao.Length <= 1, "A Imagem Não Pode Ter Menos De 1 Caracteres.");

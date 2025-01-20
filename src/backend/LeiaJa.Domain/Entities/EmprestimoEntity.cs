@@ -8,7 +8,7 @@ public sealed class EmprestimoEntity : EntityBase
     public bool Entrega { get; private set; }
 
     [JsonIgnore]
-    public UsuarioEntity usuario { get; set; } = null!;
+    public UsuarioEntity Usuario { get; set; } = null!;
 
     [JsonIgnore]
     public LivroEntity Livro { get; set; } = null!;

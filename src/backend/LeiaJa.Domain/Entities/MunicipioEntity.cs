@@ -9,7 +9,7 @@ namespace LeiaJa.Domain.Entities
         public ProvinciaEntity Provincia { get; set; } = null!;
 
         [JsonIgnore]
-        public ICollection<UsuarioEntity> usuario { get; set; } = null!;
+        public ICollection<UsuarioEntity> Usuarios { get; set; } = null!;
 
         [JsonConstructor]
         public MunicipioEntity(){}
