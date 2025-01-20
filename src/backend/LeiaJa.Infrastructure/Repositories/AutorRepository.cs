@@ -1,3 +1,5 @@
+using System.Linq.Expressions;
+
 namespace LeiaJa.Infrastructure.Repositories;
 public class AutorRepository : IAutorRepository
 {
@@ -106,8 +108,27 @@ public class AutorRepository : IAutorRepository
         }
     #endregion </GetId>
 
+    #region </Search>
+        public async Task<List<AutorEntity>> SearchAutorAsync(Expression<Func<AutorEntity, bool>> predicate)
+        {
+            try
+            {
+                if(predicate == null)
+                {
+                    throw new ArgumentNullException(nameof(predicate), "Insira uma palavra.");
+                }
+                return await _context.Autores.AsNoTracking().Where(predicate).ToListAsync();
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($" . Erro: {ex.Message}");
+                return null!;
+            }
+        }
+    #endregion </Search>
+
     #region <Update>
-        public async Task<AutorEntity> UpdateAutorAsync(AutorEntity autor)
+    public async Task<AutorEntity> UpdateAutorAsync(AutorEntity autor)
         {
             try
             {

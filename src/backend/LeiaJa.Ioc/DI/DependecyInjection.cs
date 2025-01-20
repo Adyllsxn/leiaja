@@ -54,6 +54,18 @@ public static class DependecyInjection
             services.AddAutoMapper(typeof(DomainToDTOProfile));
         #endregion </AutoMapper>
 
+        #region <Cors>
+            services.AddCors(
+                option => option.AddDefaultPolicy(
+                    policy => {
+                        policy.AllowAnyOrigin().
+                        AllowAnyHeader().
+                        AllowAnyMethod();
+                    }
+                )
+            );
+        #endregion </Cors>
+
         return services;
     }
 }

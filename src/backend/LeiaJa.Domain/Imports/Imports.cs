@@ -1,5 +1,6 @@
 #region <System>
     global using System.Text.Json.Serialization;
+    global using System.Linq.Expressions;
 #endregion </System>
 
 #region <Domain>
