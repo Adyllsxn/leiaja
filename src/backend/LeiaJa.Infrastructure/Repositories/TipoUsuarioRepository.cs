@@ -12,16 +12,41 @@ public class TipoUsuarioRepository : ITipoUsuarioRepository
     #endregion </Configuration>
 
     #region <GetId>
-        public Task<TipoUsuarioEntity> GetTipoUsuarioByIdAsync(int tipoUsuarioId)
+        public async Task<TipoUsuarioEntity> GetTipoUsuarioByIdAsync(int tipoUsuarioId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if(tipoUsuarioId <= 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(tipoUsuarioId));
+                }
+                var tipoUsuario = await _context.TipoUsuarios.FirstOrDefaultAsync(x => x.Id == tipoUsuarioId);
+                if(tipoUsuario == null)
+                {
+                    throw new KeyNotFoundException(nameof(tipoUsuario));
+                }
+                return tipoUsuario;
+            }
+            catch(Exception ex)
+            {
+                _looger.LogError($"Ocorreu um erro ao obter o tipo de usuário com ID {tipoUsuarioId}. Erro: {ex.Message}");
+                return null!;
+            }
         }
     #endregion </GetId>
 
     #region <Git>
-        public Task<List<TipoUsuarioEntity>> GetTipoUsuariosAsync()
+        public async Task<List<TipoUsuarioEntity>> GetTipoUsuariosAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _context.TipoUsuarios.ToListAsync();
+            }
+            catch(Exception ex)
+            {
+                _looger.LogError($"Ocorreu um erro ao obter os tipos de usuários. Erro: {ex.Message}");
+                return null!;
+            }
         }
     #endregion </Git>
 }

@@ -5,5 +5,5 @@ public interface IMunicipioRepository
     Task<MunicipioEntity?> DeleteMunicipioAsync(int municipioId);
     Task<PagedList<MunicipioEntity>> GetAllMunicipiosAsync(int pageNumber, int pageSize);
     Task<MunicipioEntity?> GetMunicipioByIdAsync(int municipioId);
-    Task<MunicipioEntity> UpdateMunicipioAsync(MunicipioEntity Municipio);
+    Task<MunicipioEntity> UpdateMunicipioAsync(MunicipioEntity municipio);
 }

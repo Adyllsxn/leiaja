@@ -13,16 +13,41 @@ public class GeneroRepository : IGeneroRepository
     #endregion </Configuration>
     
     #region <GetId>
-        public Task<GeneroEntity> GetGeneroByIdAsync(int generoId)
+        public async Task<GeneroEntity> GetGeneroByIdAsync(int generoId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if(generoId <= 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(generoId));
+                }
+                var genero = await _context.Generos.FirstOrDefaultAsync(x => x.Id == generoId);
+                if(genero == null)
+                {
+                    throw new KeyNotFoundException(nameof(genero));
+                }
+                return genero;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Ocorreu Um Erro ao buscar o genero com ID {generoId}. Erro: {ex.Message}");
+                return null!;
+            }
         }
     #endregion </GetId>
 
     #region <Get>
-        public Task<List<GeneroEntity>> GetGenerosAsync()
+        public async Task<List<GeneroEntity>> GetGenerosAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _context.Generos.ToListAsync();
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"Ocorreu Um Erro ao buscar os autor generos. Erro: {ex.Message}");
+                return null!;
+            }
         }
     #endregion </Get>
 }

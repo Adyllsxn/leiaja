@@ -13,16 +13,41 @@ public class TipoTelefoneRepository : ITipoTelefoneRepository
     #endregion </Configuration>
 
     #region <GetId>
-        public Task<TipoTelefoneEntity> GetTipoTelefoneByIdAsync(int tipoTelefoneId)
+        public async Task<TipoTelefoneEntity> GetTipoTelefoneByIdAsync(int tipoTelefoneId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if(tipoTelefoneId <= 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(tipoTelefoneId));
+                }
+                var tipoTelefone = await _context.TipoTelefones.FirstOrDefaultAsync(x => x.Id == tipoTelefoneId);
+                if(tipoTelefone == null)
+                {
+                    throw new KeyNotFoundException(nameof(tipoTelefone));
+                }
+                return tipoTelefone;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Ocorreu um erro ao obter o tipo de telefone com o ID {tipoTelefoneId}. Erro: {ex.Message}");
+                return null!;
+            }
         }
     #endregion </GetId>
     
     #region <Get>
-        public Task<List<TipoTelefoneEntity>> GetTipoTelefonesAsync()
+        public async Task<List<TipoTelefoneEntity>> GetTipoTelefonesAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _context.TipoTelefones.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Ocorreu um erro ao obter os tipos de telefones");
+                return null!;
+            }
         }
     #endregion </Get>
 }
