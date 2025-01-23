@@ -93,7 +93,6 @@ LeiaJa/
 │   │   ├── LeiaJa.Web/         # Interface do usuário (Blazor)
 ├── test/                      # Projetos de testes
 │   ├── LeiaJa.UnitTests/        # Testes de unidade
-│   ├── LeiaJa.IntegrationTests/  # Testes de integração
 ├── docs/                      # Documentação adicional do projeto
 │   ├── Arquitetura.md          # Detalhes sobre a arquitetura do projeto
 │   ├── API.md                  # Documentação da API (endpoints, contratos)
