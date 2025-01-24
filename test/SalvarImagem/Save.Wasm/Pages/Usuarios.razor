@@ -1,0 +1,85 @@
+﻿@page "/usuarios"
+@using Save.Wasm.Model
+@inject UsuarioService UsuarioService
+
+<h3>Lista de Usuários</h3>
+
+@if (usuarios == null)
+{
+    <p>Carregando...</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Foto</th>
+                <th>Telefone</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usuario in usuarios)
+            {
+                <tr>
+                    <td>@usuario.Nome</td>
+                    <td>@usuario.Email</td>
+                    <td><img src="@usuario.Foto" alt="Foto" width="50" /></td>
+                    <td>@usuario.Telefone</td>
+                    <td>
+                        <button @onclick="() => EditarUsuario(usuario)">Editar</button>
+                        <button @onclick="() => ExcluirUsuario(usuario.Id)">Excluir</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<h3>@(usuarioSelecionado?.Id == 0 ? "Adicionar Usuário" : "Editar Usuário")</h3>
+<EditForm Model="@usuarioSelecionado" OnValidSubmit="SalvarUsuario">
+    <InputText @bind-Value="usuarioSelecionado.Nome" placeholder="Nome" />
+    <InputText @bind-Value="usuarioSelecionado.Email" placeholder="Email" />
+    <InputText @bind-Value="usuarioSelecionado.Foto" placeholder="URL da Foto" />
+    <InputText @bind-Value="usuarioSelecionado.Telefone" placeholder="Telefone" />
+    <button type="submit">Salvar</button>
+</EditForm>
+
+@code {
+    private List<Usuario>? usuarios;
+    private Usuario usuarioSelecionado = new Usuario();
+
+    protected override async Task OnInitializedAsync()
+    {
+        usuarios = await UsuarioService.GetUsuariosAsync();
+    }
+
+    private void EditarUsuario(Usuario usuario)
+    {
+        usuarioSelecionado = usuario;
+    }
+
+    private async Task SalvarUsuario()
+    {
+        if (usuarioSelecionado.Id == 0)
+        {
+            await UsuarioService.CreateUsuarioAsync(usuarioSelecionado);
+        }
+        else
+        {
+            await UsuarioService.UpdateUsuarioAsync(usuarioSelecionado);
+        }
+
+        usuarioSelecionado = new Usuario();
+        usuarios = await UsuarioService.GetUsuariosAsync();
+    }
+
+    private async Task ExcluirUsuario(int id)
+    {
+        await UsuarioService.DeleteUsuarioAsync(id);
+        usuarios = await UsuarioService.GetUsuariosAsync();
+    }
+}
+
