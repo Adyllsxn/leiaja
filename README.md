@@ -15,7 +15,8 @@ LeiaJa é um sistema de biblioteca online desenvolvido para facilitar o gerencia
 - Recomendações Inteligentes: Sugestão de livros baseada nos favoritos e histórico de leitura, utilizando ML.NET.
 - Sistema de Avaliações e Comentários: Leitores podem avaliar e comentar sobre livros.
 - Busca Avançada: Pesquisa de livros por título, autor, categoria ou palavras-chave.
-- Funcionalidades adicionais a serem desenvolvidas ao longo do projeto.
+
+> **Nota**: Funcionalidades adicionais a serem desenvolvidas ao longo do projeto.
 
 ---
 
@@ -85,7 +86,7 @@ LeiaJa é um sistema de biblioteca online desenvolvido para facilitar o gerencia
 
 ## Gamificação no LeiaJá
 
-- ***✅ Sistema de Estrelas**: Usuários ganham estrelas por atividades como:
+**✅ Sistema de Estrelas**: Usuários ganham estrelas por atividades como:
 
    - Ler um livro até o fim 📖 ⭐
    - Avaliar e comentar livros 📝 ⭐
