@@ -28,4 +28,8 @@
     <Folder Include="Imports/" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="../../src/backend/LeiaJa.Domain/LeiaJa.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
