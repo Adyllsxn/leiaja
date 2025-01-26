@@ -2,8 +2,8 @@ namespace LeiaJa.Domain.ValueObjects;
 public sealed record Name : ValueObject
 {
     #region <Propriety>
-        private const short MinLenght = 3;
-        public string FirstName { get;}
+        private const short MinLenght = 2;
+        public string FirstName { get; }
     #endregion </Propriety>
     
     #region <Method>
@@ -20,4 +20,5 @@ public sealed record Name : ValueObject
         public static implicit operator string(Name name) => name.FirstName;
         public static implicit operator Name(string firstname) => new Name(firstname);
     #endregion <Convertor>
-}
+
+    }
