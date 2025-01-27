@@ -29,12 +29,20 @@ public static class DependecyInjection
 
         #region <Services>
             //services.AddScoped<IUsuarioService, UsuarioService>();
-            //services.AddScoped<ILivroService, LivroService>();
+            services.AddScoped<ILivroService, LivroService>();
             //services.AddScoped<IEmprestimoService, EmprestimoService>();
         #endregion </Services>
 
+        #region <UseCase>
+            services.AddScoped<CreateLivroUseCase>();
+            services.AddScoped<DeleteLivroUseCase>();
+            services.AddScoped<GetLivrosUseCase>();
+            services.AddScoped<GetLivroByIdUseCase>();
+            services.AddScoped<UpdateLivroUseCase>();
+        #endregion </UseCase>
+
         #region <AutoMapper>
-            //services.AddAutoMapper(typeof(DomainToDTOProfile));
+            services.AddAutoMapper(typeof(DomainToDTOProfile));
         #endregion </AutoMapper>
 
         #region <Cors>

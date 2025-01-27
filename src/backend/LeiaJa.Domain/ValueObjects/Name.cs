@@ -2,7 +2,7 @@ namespace LeiaJa.Domain.ValueObjects;
 public sealed record Name : ValueObject
 {
     #region <Propriety>
-        private const short MinLenght = 2;
+        private const short MaxLenght = 50;
         public string FirstName { get; }
     #endregion </Propriety>
     
@@ -10,7 +10,7 @@ public sealed record Name : ValueObject
         public Name(string firstname)
         {
             DomainExceptionValidation.When(string.IsNullOrWhiteSpace(firstname), "Nome Inválido.");
-            DomainExceptionValidation.When(firstname.Length < MinLenght, "Nome Inválido"); 
+            DomainExceptionValidation.When(firstname.Length > MaxLenght, "Nome Inválido"); 
             
             FirstName = firstname;
         } 

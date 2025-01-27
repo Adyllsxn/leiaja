@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeiaJa.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250126110421_CreateMigration")]
+    [Migration("20250127152220_CreateMigration")]
     partial class CreateMigration
     {
         /// <inheritdoc />
