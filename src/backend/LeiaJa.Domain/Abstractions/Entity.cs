@@ -1,6 +1,5 @@
 namespace LeiaJa.Domain.Abstractions;
-public abstract class Entity : IAgregateRoot
+public abstract class Entity
 {
     public int Id { get; protected set; }
-
 }

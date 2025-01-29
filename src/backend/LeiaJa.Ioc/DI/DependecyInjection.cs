@@ -21,24 +21,15 @@ public static class DependecyInjection
         #endregion </ConnectioDb>
 
         #region <Repositories>
-            //services.AddScoped<ISistemaRepository, SistemaRepository>();
-            //services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-            services.AddScoped<ILivroRepository, LivroRepository>();
-            //services.AddScoped<IEmprestimoRepository, EmprestimoRepository>();
+            services.AddRepositoryDI();
         #endregion </Repositories>
 
         #region <Services>
-            //services.AddScoped<IUsuarioService, UsuarioService>();
-            services.AddScoped<ILivroService, LivroService>();
-            //services.AddScoped<IEmprestimoService, EmprestimoService>();
+            services.AddServiceDI();
         #endregion </Services>
 
         #region <UseCase>
-            services.AddScoped<CreateLivroUseCase>();
-            services.AddScoped<DeleteLivroUseCase>();
-            services.AddScoped<GetLivrosUseCase>();
-            services.AddScoped<GetLivroByIdUseCase>();
-            services.AddScoped<UpdateLivroUseCase>();
+            services.AddUseCase();
         #endregion </UseCase>
 
         #region <AutoMapper>

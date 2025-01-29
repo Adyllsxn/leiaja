@@ -3,6 +3,7 @@ public static class UseExtensions
 {
     public static void AddUseExtensions(this WebApplication app)
     {
+        app.UseInfrastructureSwagger();
         app.UseApp(); 
     }
 }
