@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeiaJa.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250129152659_CREATEMIGRATIONS")]
+    [Migration("20250130193751_CREATEMIGRATIONS")]
     partial class CREATEMIGRATIONS
     {
         /// <inheritdoc />
@@ -23,6 +23,36 @@ namespace LeiaJa.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("LeiaJa.Domain.Entities.AthorEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("NVARCHAR")
+                        .HasColumnName("Nome");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("NVARCHAR")
+                        .HasColumnName("UltimoNome");
+
+                    b.Property<string>("Photo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Foto");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TBL_ATHOR", (string)null);
+                });
 
             modelBuilder.Entity("LeiaJa.Domain.Entities.CategoryEntity", b =>
                 {

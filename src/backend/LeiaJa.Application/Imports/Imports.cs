@@ -14,8 +14,10 @@
 
 #region <Application>
     global using LeiaJa.Application.DTOs.CategoryDTO;
-    global using LeiaJa.Application.DTOs.Dashboard;
+    global using LeiaJa.Application.DTOs.DashboardDTO;
+    global using LeiaJa.Application.DTOs.AthorDTO;
     global using LeiaJa.Application.Interfaces;
     global using LeiaJa.Application.UseCase.CategoryUseCase;
     global using LeiaJa.Application.UseCase.DashboardUseCase;
+    global using LeiaJa.Application.UseCase.AthorUseCase;
 #endregion </Application>

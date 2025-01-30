@@ -5,6 +5,7 @@ public static class RepositoryDI
     {
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<IDashboardRepository, DashboardRepository>();
+        services.AddScoped<IAthorRepository, AthorRepository>();
 
         return services;
     }

@@ -1,7 +1,7 @@
 namespace LeiaJa.Application.DTOs.CategoryDTO;
 public class CategoryDTO
 {
-    [Range(1, int.MaxValue, ErrorMessage = "O ID Do Autor Deve Ser Maior Que Zero.")]
+    [Range(1, int.MaxValue, ErrorMessage = "O ID Deve Ser Maior Que Zero.")]
     public int Id { get; set; }
 
     [Required(ErrorMessage = "Categoria É Obrigatório")]

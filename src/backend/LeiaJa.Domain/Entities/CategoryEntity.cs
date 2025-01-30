@@ -1,5 +1,5 @@
 namespace LeiaJa.Domain.Entities;
-public sealed class CategoryEntity : Entity, IAgregateRoot
+public sealed class CategoryEntity : EntityBase, IAgregateRoot
 {
     public string Category { get; private set; } = null!;
     public string Description { get; private set; } = null!;

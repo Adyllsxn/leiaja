@@ -15,6 +15,11 @@ public static class UseCaseDI
             services.AddScoped<DeleteCategoryUseCase>();
         #endregion </Category>
 
+        #region <Athor>
+            services.AddScoped<CreateAthorUseCase>();
+            services.AddScoped<GetAthorsUseCase>();
+        #endregion </Athor>
+
         return services;
     }
 }

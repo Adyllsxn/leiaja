@@ -11,6 +11,11 @@ public class DomainToDTOProfile : Profile
         #region <Dashboard>
             CreateMap<DashboardEntity, DashboardDTO>().ReverseMap();
         #endregion </Dashboard>
+
+        #region <Athor>
+            CreateMap<AthorEntity, AthorDTO>().ReverseMap();
+            CreateMap<AthorEntity, AthorPostDTO>().ReverseMap();
+        #endregion </AthorEntity,>
         
     }
 }

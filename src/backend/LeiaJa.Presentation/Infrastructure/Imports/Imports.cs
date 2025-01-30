@@ -22,5 +22,6 @@
 
 #region <Application>
     global using LeiaJa.Application.DTOs.CategoryDTO;
+    global using LeiaJa.Application.DTOs.AthorDTO;
     global using LeiaJa.Application.Interfaces;
 #endregion </Application>

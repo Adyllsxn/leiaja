@@ -26,7 +26,7 @@ namespace LeiaJa.Presentation.Features.Controllers
         #endregion </Get>
 
         #region <GetId>
-            [HttpGet("GetCategory"), EndpointSummary("Get Category By Id")]
+            [HttpGet("GetCategoryById"), EndpointSummary("Get Category By Id")]
             public async Task<ActionResult> GetCategoryById(int categoryId)
             {
                 if(categoryId <= 0)
@@ -44,8 +44,8 @@ namespace LeiaJa.Presentation.Features.Controllers
         #endregion </GetId>
 
         #region <Create>
-            [HttpPost("CreateCategoria"), EndpointSummary("Create Category On Database")]
-            public async Task<ActionResult> CreateCategoria(CategoryPostDTO categoryPostDTO)
+            [HttpPost("CreateCategory"), EndpointSummary("Create Category On Database")]
+            public async Task<ActionResult> CreateCategory(CategoryPostDTO categoryPostDTO)
             {
                 try
                 {
@@ -63,7 +63,7 @@ namespace LeiaJa.Presentation.Features.Controllers
         #endregion </Create>
 
         #region <Update>
-            [HttpPut("UpdateAutor"), EndpointSummary("Update Category On Database")]
+            [HttpPut("UpdateCategory"), EndpointSummary("Update Category On Database")]
             public async Task<ActionResult> UpdateCategory(CategoryDTO categoryDTO)
             {
                 try
@@ -81,8 +81,8 @@ namespace LeiaJa.Presentation.Features.Controllers
             }
         #endregion </Update>
 
-        #region  <Delete>
-            [HttpDelete("DeleteAutor"), EndpointSummary("Delete Category On Database")]
+        #region <Delete>
+            [HttpDelete("DeleteCategory"), EndpointSummary("Delete Category On Database")]
             public async Task<ActionResult> DeleteCategory(int categoryId)
             {
                 try
