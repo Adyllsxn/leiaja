@@ -2,6 +2,7 @@
 #region <System>    
     global using System.Text.Json;
     global using System.ComponentModel.DataAnnotations;
+    global using System.Net;
 #endregion </System>
 
 #region <Microsoft>
@@ -11,6 +12,7 @@
 #region <Prasentation>
     global using LeiaJa.Presentation.Infrastructure.Extensions;
     global using LeiaJa.Presentation.Domain.Pagination;
+    global using LeiaJa.Presentation.Features.MiddleWare;
 #endregion </Prasentation>
 
 #region <Domain>
