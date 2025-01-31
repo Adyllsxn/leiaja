@@ -4,6 +4,7 @@
 
 #region <System>
     global using System.ComponentModel.DataAnnotations;
+    global using System.Linq.Expressions;
 #endregion
 
 #region <Domain>

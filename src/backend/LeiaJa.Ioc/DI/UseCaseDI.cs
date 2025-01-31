@@ -18,6 +18,10 @@ public static class UseCaseDI
         #region <Athor>
             services.AddScoped<CreateAthorUseCase>();
             services.AddScoped<GetAthorsUseCase>();
+            services.AddScoped<GetAthorByIdUseCase>();
+            services.AddScoped<DeleteAthorUseCase>();
+            services.AddScoped<UpdateAthorUseCase>();
+            services.AddScoped<SearchAthorUseCase>();
         #endregion </Athor>
 
         return services;
