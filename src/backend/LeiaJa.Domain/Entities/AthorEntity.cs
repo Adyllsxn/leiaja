@@ -24,13 +24,13 @@ public sealed class AthorEntity : EntityBase, IAgregateRoot
     }
     public void ValidationDomain(string firstName, string lastName, string photo)
     {
-        DomainExceptionValidation.When(string.IsNullOrEmpty(firstName), "FirstName Inválido");
+        DomainExceptionValidation.When(string.IsNullOrWhiteSpace(firstName), "FirstName Inválido");
         DomainExceptionValidation.When(firstName.Length > 50, "O FirstName deve ter menos de 50 caracteres.");
 
-        DomainExceptionValidation.When(string.IsNullOrEmpty(lastName), "LastName Inválido");
+        DomainExceptionValidation.When(string.IsNullOrWhiteSpace(lastName), "LastName Inválido");
         DomainExceptionValidation.When(lastName.Length > 50, "O LastName deve ter menos de 50 caracteres.");
 
-        DomainExceptionValidation.When(string.IsNullOrEmpty(photo), "Photo Inválido");
+        DomainExceptionValidation.When(string.IsNullOrWhiteSpace(photo), "Photo Inválido");
         DomainExceptionValidation.When(photo.Length < 1, "A Photo deve ter pelo menos 1 caracteres.");
 
         FirstName = firstName;

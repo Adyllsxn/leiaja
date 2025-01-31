@@ -22,11 +22,11 @@ public sealed class CategoryEntity : EntityBase, IAgregateRoot
     }
     public void ValidationDomain(string category, string description)
     {
-        DomainExceptionValidation.When(string.IsNullOrEmpty(category), "Categoria Inválido");
+        DomainExceptionValidation.When(string.IsNullOrWhiteSpace(category), "Categoria Inválido");
         DomainExceptionValidation.When(category.Length > 50, "Categoria deve ter menos de 50 caracteres");
 
-        DomainExceptionValidation.When(string.IsNullOrEmpty(category), "Categoria Inválido");
-        DomainExceptionValidation.When(category.Length > 200, "Categoria deve ter menos de 200 caracteres");
+        DomainExceptionValidation.When(string.IsNullOrWhiteSpace(description), "Categoria Inválido");
+        DomainExceptionValidation.When(description.Length > 200, "Categoria deve ter menos de 200 caracteres");
 
         Category = category;
         Description = description;
