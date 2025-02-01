@@ -1,14 +1,20 @@
 # LeiaJa
 
-LeiaJa é um sistema de gestão de empréstimos, desenvolvido para simplificar o gerenciamento de solicitações, devoluções e organização de itens emprestados.
+LeiaJa é um sistema de biblioteca online desenvolvido para facilitar o gerenciamento de livros, categorias, autores e usuários, permitindo a interação através de funcionalidades como favoritos, listas de leitura e recomendações personalizadas.
 
 ---
 
 ## Funcionalidades
 
-- Sistema de login com diferentes perfis de acesso: **Administrador** e **Cliente**.
-- Controle de empréstimos e devoluções.
-- Organização e gerenciamento eficiente dos itens emprestados.
+- Autenticação e Perfis de Acesso: Usuários podem criar contas e acessar com diferentes permissões  (**Administrador** e **Leitor**).
+- Cadastro e Gerenciamento:
+    - Livros, autores e categorias.
+    - Associação de livros a múltiplos autores e categorias.
+- Listas de Leitura: Usuários podem criar e gerenciar listas personalizadas como "Quero Ler", "Lendo" e "Lidos".
+- Favoritos: Usuários podem marcar livros como favoritos.
+- Recomendações Inteligentes: Sugestão de livros baseada nos favoritos e histórico de leitura, utilizando ML.NET.
+- Sistema de Avaliações e Comentários: Leitores podem avaliar e comentar sobre livros.
+- Busca Avançada: Pesquisa de livros por título, autor, categoria ou palavras-chave.
 - Funcionalidades adicionais a serem desenvolvidas ao longo do projeto.
 
 ---
@@ -21,6 +27,7 @@ LeiaJa é um sistema de gestão de empréstimos, desenvolvido para simplificar o
 3. **Entity Framework Core**: Para mapeamento objeto-relacional (ORM).
    - Providers: `InMemory`, `SQL Server`, `Design`.
 4. **JWT Bearer**: Para autenticação e autorização via tokens JWT.
+5. **ML.NET**: Para implementar recomendações baseadas em machine learning.
 
 ### Frontend
 1. **Blazor**: Framework para desenvolvimento do frontend interativo e moderno.
@@ -69,10 +76,27 @@ LeiaJa é um sistema de gestão de empréstimos, desenvolvido para simplificar o
 
 ## Funcionalidades Futuras
 
-- Notificações automáticas para devoluções pendentes.
-- Histórico detalhado de empréstimos.
-- Relatórios personalizados para administradores.
-- Integração com serviços de e-mail para lembretes.
+- Notificações automáticas para lembretes de leitura.
+- Relatórios personalizados para usuários e administradores.
+- Implementação de um sistema de gamificação para incentivar a leitura.
+- Integração com serviços de e-mail para recomendações personalizadas.
+
+---
+
+## Gamificação no LeiaJá
+
+- ***✅ Sistema de Estrelas**: Usuários ganham estrelas por atividades como:
+
+   - Ler um livro até o fim 📖 ⭐
+   - Avaliar e comentar livros 📝 ⭐
+   - Compartilhar recomendações 📢 ⭐
+   - Participar de desafios de leitura 🏆 ⭐
+
+**🎁 Recompensas**: As estrelas podem ser trocadas por:
+
+   - Cursos gratuitos sobre literatura, escrita ou temas variados 📚🎓
+   - Acesso antecipado a novos livros 📕
+   - Cupons de desconto em livrarias ou e-books 🏷️
 
 ---
 
@@ -92,12 +116,15 @@ LeiaJa/
 │   ├── frontend/              # Código do frontend
 │   │   ├── LeiaJa.Web/         # Interface do usuário (Blazor)
 ├── test/                      # Projetos de testes
-│   ├── LeiaJa.UnitTests/        # Testes de unidade
+│   ├── LeiaJa.UnitTest/        # Testes de unidade
+│   ├── LeiaJa.IntegrationTest/        # Testes de integração
 ├── docs/                      # Documentação adicional do projeto
 │   ├── Arquitetura.md          # Detalhes sobre a arquitetura do projeto
 │   ├── API.md                  # Documentação da API (endpoints, contratos)
 │   ├── GuiaDeInstalação.md     # Instruções de configuração do ambiente
 │   ├── ROADMAP.md              # Planejamento de funcionalidades futuras
+├── .github/                   # Configuração para GitHub Actions e workflows
+│   ├── workflows/              # Automatização (ex: GitHub Pages, CI/CD)
 ├── README.md                  # Documentação principal do projeto
 ├── LeiaJa.sln                 # Solução do projeto
 
