@@ -3,6 +3,9 @@ public sealed class CategoryEntity : EntityBase, IAgregateRoot
 {
     public string Category { get; private set; } = null!;
     public string Description { get; private set; } = null!;
+    
+    [JsonIgnore]
+    public List<BookCategoryEntity> BookCategories { get; set; } = null!;
 
     [JsonConstructor]
     public CategoryEntity(){}
