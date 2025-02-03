@@ -13,5 +13,5 @@ public sealed class BookEntity : EntityBase, IAgregateRoot
     public List<BookAthorEntity> BookAthors { get; set; } = new();
 
     [JsonIgnore]
-    public List<FavoriteEntity> Favorites { get; set; } = null!;
+    public List<FavoriteEntity> Favorites { get; set; } = new();
 }

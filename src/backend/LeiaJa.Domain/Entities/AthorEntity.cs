@@ -9,7 +9,7 @@ public sealed class AthorEntity : EntityBase, IAgregateRoot
     public List<BookAthorEntity> BookAthors { get; set; } = new();
     
     [JsonConstructor]
-    public AthorEntity(){}
+    private AthorEntity(){}
     
     public AthorEntity(int id, string firstName, string lastName, string photo)
     {

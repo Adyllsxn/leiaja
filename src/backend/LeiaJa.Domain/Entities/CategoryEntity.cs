@@ -8,7 +8,7 @@ public sealed class CategoryEntity : EntityBase, IAgregateRoot
     public List<BookCategoryEntity> BookCategories { get; set; } = null!;
 
     [JsonConstructor]
-    public CategoryEntity(){}
+    private CategoryEntity(){}
     public CategoryEntity(int id, string category, string description)
     {
         DomainExceptionValidation.When(id <= 0, "Id da categoria não pode ser menor ou igual à zero.");
