@@ -7,7 +7,7 @@ public class DashboardController(IDashboardService _service) : ControllerBase
     public async Task<ActionResult> Dashboard()
     {
         var quantityItems = await _service.GetQuantityItems();
-        var result = $"=> Total Category: {quantityItems.CategoryItems}\n=> Total Athor: {quantityItems.AthorItems} ";
+        var result = $"=> Total Category: {quantityItems.CategoryItems}\n=> Total Athor: {quantityItems.AthorItems}\n=> Total Book: {quantityItems.BookItems} ";
         return Ok(result);
     }
 }
