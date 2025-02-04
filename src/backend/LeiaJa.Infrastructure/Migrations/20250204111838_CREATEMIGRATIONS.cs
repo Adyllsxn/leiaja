@@ -60,17 +60,34 @@ namespace LeiaJa.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TBL_BOOK_ATHOR",
+                name: "Users",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EUsuario = table.Column<int>(type: "int", nullable: false),
+                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PasswordHash = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
+                    PasswordSalt = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TBL_BOOK_ATHOR",
+                columns: table => new
+                {
                     Book = table.Column<int>(type: "int", nullable: false),
                     Athor = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TBL_BOOK_ATHOR", x => x.Id);
+                    table.PrimaryKey("PK_TBL_BOOK_ATHOR", x => new { x.Book, x.Athor });
                     table.ForeignKey(
                         name: "FK_BookAthor_Athor",
                         column: x => x.Athor,
@@ -89,14 +106,12 @@ namespace LeiaJa.Infrastructure.Migrations
                 name: "TBL_BOOK_CATEGORY",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     Book = table.Column<int>(type: "int", nullable: false),
                     Category = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TBL_BOOK_CATEGORY", x => x.Id);
+                    table.PrimaryKey("PK_TBL_BOOK_CATEGORY", x => new { x.Book, x.Category });
                     table.ForeignKey(
                         name: "FK_BookCategory_Book",
                         column: x => x.Book,
@@ -127,16 +142,6 @@ namespace LeiaJa.Infrastructure.Migrations
                 column: "Athor");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TBL_BOOK_ATHOR_Book",
-                table: "TBL_BOOK_ATHOR",
-                column: "Book");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TBL_BOOK_CATEGORY_Book",
-                table: "TBL_BOOK_CATEGORY",
-                column: "Book");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_TBL_BOOK_CATEGORY_Category",
                 table: "TBL_BOOK_CATEGORY",
                 column: "Category");
@@ -150,6 +155,9 @@ namespace LeiaJa.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "TBL_BOOK_CATEGORY");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "TBL_ATHOR");

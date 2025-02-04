@@ -4,7 +4,7 @@ public class BookAthorConfiguration : IEntityTypeConfiguration<BookAthorEntity>
     public void Configure(EntityTypeBuilder<BookAthorEntity> builder)
     {
         builder.ToTable("TBL_BOOK_ATHOR");
-        builder.Property(x => x.Id);
+        builder.HasKey(x => new { x.BookId, x.AthorId });
         builder.Property(x => x.BookId).
                 IsRequired(true).
                 HasColumnName("Book");

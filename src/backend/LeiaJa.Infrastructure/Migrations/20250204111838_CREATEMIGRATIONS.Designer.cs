@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeiaJa.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250204071719_CREATEMIGRATIONS")]
+    [Migration("20250204111838_CREATEMIGRATIONS")]
     partial class CREATEMIGRATIONS
     {
         /// <inheritdoc />
@@ -57,37 +57,23 @@ namespace LeiaJa.Infrastructure.Migrations
 
             modelBuilder.Entity("LeiaJa.Domain.Entities.BookAthorEntity", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<int>("BookId")
+                        .HasColumnType("int")
+                        .HasColumnName("Book");
 
                     b.Property<int>("AthorId")
                         .HasColumnType("int")
                         .HasColumnName("Athor");
 
-                    b.Property<int>("BookId")
-                        .HasColumnType("int")
-                        .HasColumnName("Book");
-
-                    b.HasKey("Id");
+                    b.HasKey("BookId", "AthorId");
 
                     b.HasIndex("AthorId");
-
-                    b.HasIndex("BookId");
 
                     b.ToTable("TBL_BOOK_ATHOR", (string)null);
                 });
 
             modelBuilder.Entity("LeiaJa.Domain.Entities.BookCategoryEntity", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
                     b.Property<int>("BookId")
                         .HasColumnType("int")
                         .HasColumnName("Book");
@@ -96,9 +82,7 @@ namespace LeiaJa.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Category");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
+                    b.HasKey("BookId", "CategoryId");
 
                     b.HasIndex("CategoryId");
 
@@ -187,6 +171,46 @@ namespace LeiaJa.Infrastructure.Migrations
                             Category = "Finanças",
                             Description = "dhsjkdjskd"
                         });
+                });
+
+            modelBuilder.Entity("LeiaJa.Domain.Entities.UserEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("EUsuario")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Photo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("LeiaJa.Domain.Entities.BookAthorEntity", b =>

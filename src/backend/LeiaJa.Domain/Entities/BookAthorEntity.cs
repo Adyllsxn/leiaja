@@ -1,5 +1,5 @@
 namespace LeiaJa.Domain.Entities;
-public sealed class BookAthorEntity: EntityBase, IAgregateRoot
+public sealed class BookAthorEntity
 {
     public int BookId { get; set; }
     public int AthorId { get; set; }
@@ -11,14 +11,8 @@ public sealed class BookAthorEntity: EntityBase, IAgregateRoot
     public AthorEntity Athor { get; set; } = null!;
 
     [JsonConstructor]
-    private BookAthorEntity(){}
+    public BookAthorEntity(){}
 
-    public BookAthorEntity(int id, int bookId, int athorId)
-    {
-        DomainExceptionValidation.When(id <= 0, "bookAthorId não poder ser menor ou igual à zero!");
-        Id = id;
-        ValidationDomain( bookId,  athorId);
-    }
     public BookAthorEntity(int bookId, int athorId)
     {
         ValidationDomain( bookId,  athorId);

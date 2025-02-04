@@ -24,7 +24,7 @@ public class ExceptionMiddleware
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
             var response = _env.IsDevelopment() ?
-                            new ApiException(context.Response.StatusCode.ToString(), ex.Message, ex.StackTrace.ToString()) :
+                            new ApiException(context.Response.StatusCode.ToString(), ex.Message, ex.StackTrace ?? "No stack trace available") :
                             new ApiException(context.Response.StatusCode.ToString(), ex.Message, "Internal server error");
 
             var options = new JsonSerializerOptions{PropertyNamingPolicy = JsonNamingPolicy.CamelCase};
