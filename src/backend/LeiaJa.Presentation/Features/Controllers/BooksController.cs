@@ -1,10 +1,9 @@
-using LeiaJa.Domain.Entities;
-
 namespace LeiaJa.Presentation.Features.Controllers;
 [ApiController]
 [Route("api/[controller]")]
-public class BooksController(IBookRepository _service) : ControllerBase
+public class BooksController(IBookService _service) : ControllerBase
 {
+
     #region <Get>
         [HttpGet("GetBooks"), EndpointSummary("Get All Books")]
         public async Task<ActionResult> GetBooks()
@@ -25,9 +24,27 @@ public class BooksController(IBookRepository _service) : ControllerBase
         }
     #endregion </Get>
 
+    #region <GetId>
+            [HttpGet("GetBookById"), EndpointSummary("Get Book By Id")]
+            public async Task<ActionResult> GetBookById(int bookId)
+            {
+                if(bookId <= 0)
+                {
+                    return BadRequest("Não Deve Ser Negativa ou Zero");
+                }
+                var book= await _service.GetBookByIdAsync(bookId);
+
+                if(book == null)
+                {
+                    return NotFound("Não Foi Encontrado");
+                }
+                return Ok(book);
+            }
+        #endregion </GetId>
+
     #region <Create>
             [HttpPost("CreateBook"), EndpointSummary("Create Books On Database")]
-            public async Task<ActionResult> CreateBook([FromBody] BookEntity book, [FromQuery]List<int> categoryId, [FromQuery]List<int> athorId )
+            public async Task<ActionResult> CreateBook([FromBody] BookPostDTO book, [FromQuery]List<int> categoryId, [FromQuery]List<int> athorId )
             {
                 try
                 {

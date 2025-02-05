@@ -20,7 +20,7 @@ public class CreateCategoryUseCase(ICategoryRepository _repository, IMapper _map
                     return response;
                 }
 
-                response.Data = _mapper.Map<List<CategoryDTO>>(createCategory);
+                response.Data = _mapper.Map<List<CategoryDTO>>(await _repository.GetCategoriesAsync());
                 response.Message = "O Autor Foi Salvo Com Sucesso";
                 response.StatusCode = 201;
                 return response;

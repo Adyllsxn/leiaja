@@ -6,7 +6,7 @@ public sealed class AthorEntity : EntityBase, IAgregateRoot
     public string Photo { get; private set; } = null!;
     
     [JsonIgnore]
-    public List<BookAthorEntity> BookAthors { get; set; } = new();
+    public ICollection<BookAthorEntity> BookAthors { get; set; } = new List<BookAthorEntity>();
     
     [JsonConstructor]
     private AthorEntity(){}

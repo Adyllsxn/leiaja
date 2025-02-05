@@ -24,6 +24,16 @@ public static class UseCaseDI
             services.AddScoped<SearchAthorUseCase>();
         #endregion </Athor>
 
+        #region <Book>
+        services.AddScoped<CreateBookUseCase>();
+        services.AddScoped<GetBookUseCase>();
+        services.AddScoped<GetBookByIdUseCase>();
+        services.AddScoped<DeleteBookUseCase>();
+        services.AddScoped<UpdateBookUseCase>();
+        services.AddScoped<SearchBookUseCase>();
+        #endregion </Book>
+
+
         return services;
     }
 }

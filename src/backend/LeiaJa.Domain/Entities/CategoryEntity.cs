@@ -5,7 +5,7 @@ public sealed class CategoryEntity : EntityBase, IAgregateRoot
     public string Description { get; private set; } = null!;
     
     [JsonIgnore]
-    public List<BookCategoryEntity> BookCategories { get; set; } = null!;
+    public ICollection<BookCategoryEntity> BookCategories { get; set; } = new List<BookCategoryEntity>();
 
     [JsonConstructor]
     private CategoryEntity(){}

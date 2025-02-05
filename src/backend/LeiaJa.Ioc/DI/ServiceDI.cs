@@ -6,6 +6,7 @@ public static class ServiceDI
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<IDashboardService, DashboardService>();
         services.AddScoped<IAthorService, AthorService>();
+        services.AddScoped<IBookService, BookService>();
         return services;
     }
 }

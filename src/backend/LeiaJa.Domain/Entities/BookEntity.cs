@@ -8,29 +8,29 @@ public sealed class BookEntity : EntityBase, IAgregateRoot
     public DateTime DataCreateBook { get; set; }
 
     [JsonIgnore]
-    public List<BookCategoryEntity> BookCategories { get; set; } = new();
-    
+    public ICollection<BookCategoryEntity> BookCategories { get; set; } = new List<BookCategoryEntity>();
+
     [JsonIgnore]
-    public List<BookAthorEntity> BookAthors { get; set; } = new();
+    public ICollection<BookAthorEntity> BookAthors { get; set; } = new List<BookAthorEntity>();
 
     /*[JsonIgnore]
     public List<FavoriteEntity> Favorites { get; set; } = new(); */
     [JsonConstructor]
-    private BookEntity(){}
+    private BookEntity() { }
 
     public BookEntity(int id, string title, string image, string document, string edition, DateTime dataCreateBook)
     {
         DomainExceptionValidation.When(id <= 0, "O Id do autor não poder ser menor ou igual à zero!");
         Id = id;
-        ValidationDomain( title,  image,  document,  edition,  dataCreateBook);
+        ValidationDomain(title, image, document, edition, dataCreateBook);
     }
     public BookEntity(string title, string image, string document, string edition, DateTime dataCreateBook)
     {
-        ValidationDomain( title,  image,  document,  edition,  dataCreateBook);
+        ValidationDomain(title, image, document, edition, dataCreateBook);
     }
     public void Update(string title, string image, string document, string edition, DateTime dataCreateBook)
     {
-        ValidationDomain( title,  image,  document,  edition,  dataCreateBook);
+        ValidationDomain(title, image, document, edition, dataCreateBook);
     }
     public void ValidationDomain(string title, string image, string document, string edition, DateTime dataCreateBook)
     {

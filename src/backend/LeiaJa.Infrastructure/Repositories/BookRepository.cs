@@ -20,7 +20,6 @@ public class BookRepository(AppDbContext _context, ILogger<BookEntity> _logger) 
                 throw new ArgumentNullException(nameof(athorId), "A lista de autores não pode estar vazia.");
             }
 
-            // Buscar categorias e autores pelo ID antes de associar ao livro
             var categories = await _context.Categories.AsNoTracking().Where(c => categoryId.Contains(c.Id)).ToListAsync();
             var athors = await _context.Athors.AsNoTracking().Where(a => athorId.Contains(a.Id)).ToListAsync();
 
@@ -35,14 +34,14 @@ public class BookRepository(AppDbContext _context, ILogger<BookEntity> _logger) 
             }
             book.BookAthors = athors.Select(a => new BookAthorEntity 
             {
-                AthorId = a.Id,  // ou outro campo apropriado
-                BookId = book.Id   // dependendo da estrutura da tua entidade
+                AthorId = a.Id,  
+                BookId = book.Id   
             }).ToList();
 
             book.BookCategories = categories.Select(a => new BookCategoryEntity 
             {
-                CategoryId = a.Id,  // ou outro campo apropriado
-                BookId = book.Id   // dependendo da estrutura da tua entidade
+                CategoryId = a.Id,  
+                BookId = book.Id   
             }).ToList();
 
             await _context.Books.AddAsync(book);
@@ -57,27 +56,65 @@ public class BookRepository(AppDbContext _context, ILogger<BookEntity> _logger) 
             }
         }
     #endregion </Create>
-    public Task<BookEntity?> DeleteBookAsync(int bookId)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<BookEntity?> GetBookByIdAsync(int bookId)
-    {
-        throw new NotImplementedException();
-    }
+    
+    #region <Delete>
+        public async Task<BookEntity?> DeleteBookAsync(int bookId)
+        {
+            try
+            {
+                if (bookId <= 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(bookId), "O ID Do Livro Não Deve Ser Negativo Ou Zero.");
+                }
+                
+                var book = await _context.Books.FirstOrDefaultAsync(x => x.Id == bookId);
+                if (book == null)
+                {
+                    throw new KeyNotFoundException($"Nenhum livro Encontrada com o ID {bookId}.");
+                }
+                
+                _context.Books.Remove(book);
+                await _context.SaveChangesAsync();
+                return book;
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"Ocorreu Um Erro Ao Deletar O livro. Erro: {ex.Message}");
+                return null!;
+            }
+        }
+    #endregion </Delete>
+    
+    #region <GetId>
+        public async Task<BookEntity?> GetBookByIdAsync(int bookId)
+        {
+            try
+            {
+                if (bookId <= 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(bookId), "O ID Do livro Não Deve Ser Negativo Ou Zero.");
+                }
+                var book = await _context.Books.AsNoTracking().Include(b => b.BookAthors).ThenInclude(ba => ba.Athor).Include(b => b.BookCategories).ThenInclude(bc => bc.Category).FirstOrDefaultAsync(x => x.Id == bookId);
+                if (book == null)
+                {
+                    throw new KeyNotFoundException("Categoria Não Foi Encontrado.");
+                }
+                return book;
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"Ocorreu Um Erro Ao Buscar o livro Com ID {bookId}. Erro: {ex.Message}");
+                return null;
+            }
+        }
+    #endregion </GetId>
 
     #region <Get>
         public async Task<List<BookEntity>> GetBooksAsync()
         {
             try
             {
-                var books = await _context.Books.AsNoTracking().Include(x => x.BookAthors).Include(x => x.BookCategories).ToListAsync();
-                if(books == null)
-                {
-                    throw new KeyNotFoundException($"Livros não foram encontradas.");
-                }
-                return books;
+                return await _context.Books.AsNoTracking().Include(b => b.BookAthors).ThenInclude(ba => ba.Athor).Include(b => b.BookCategories).ThenInclude(bc => bc.Category).ToListAsync();
             }
             catch(Exception ex)
             {
@@ -86,10 +123,21 @@ public class BookRepository(AppDbContext _context, ILogger<BookEntity> _logger) 
             }
         }
     #endregion </Get>
-    public Task<List<BookEntity>> SearchBookAsync(Expression<Func<BookEntity, bool>> predicate)
-    {
-        throw new NotImplementedException();
-    }
+    
+    #region <Search>
+        public async Task<List<BookEntity>> SearchBookAsync(Expression<Func<BookEntity, bool>> predicate)
+        {
+            try
+            {
+                return await _context.Books.AsNoTracking().Include(x => x.BookAthors).Include(x => x.BookCategories).Where(predicate).ToListAsync();
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"Ocorreu um ao pesquisar os livros. Erro: {ex.Message}");
+                return null!; 
+            }
+        }
+    #endregion </Search>
 
     #region <Update>
         public async Task<BookEntity> UpdateBookAsync(BookEntity book, List<int> categoryId, List<int> athorId)

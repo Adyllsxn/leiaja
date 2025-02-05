@@ -20,7 +20,7 @@ public class CreateAthorUseCase(IAthorRepository _repository, IMapper _mapper)
                 return response;
             }
 
-            response.Data = _mapper.Map<List<AthorDTO>>(createAthor);
+            response.Data = _mapper.Map<List<AthorDTO>>(await _repository.GetAthorsAsync());
             response.Message = "O Autor Foi Salvo Com Sucesso";
             response.StatusCode = 201;
             return response;

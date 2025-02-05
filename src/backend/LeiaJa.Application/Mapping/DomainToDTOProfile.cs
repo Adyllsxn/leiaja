@@ -15,7 +15,24 @@ public class DomainToDTOProfile : Profile
         #region <Athor>
             CreateMap<AthorEntity, AthorDTO>().ReverseMap();
             CreateMap<AthorEntity, AthorPostDTO>().ReverseMap();
-        #endregion </AthorEntity,>
-        
+        #endregion </Athor>
+
+        #region <Book>
+            CreateMap<BookEntity, BookDto>()
+            .ForMember(dest => dest.Authors, opt => opt.MapFrom(src => src.BookAthors.Select(ba => new AuthorDto
+            {
+                FirstName = ba.Athor.FirstName,
+                LastName = ba.Athor.LastName
+            })))
+            .ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.BookCategories.Select(bc => new CategoryDto
+            {
+                Category = bc.Category.Category
+            }))).ReverseMap();
+            CreateMap<AthorEntity, AuthorDto>();
+            CreateMap<CategoryEntity, CategoryDto>();
+
+            CreateMap<BookEntity, BookPostDTO>().ReverseMap();
+
+        #endregion </Book>
     }
 }

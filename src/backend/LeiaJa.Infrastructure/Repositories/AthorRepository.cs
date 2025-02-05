@@ -106,19 +106,19 @@ public class AthorRepository(AppDbContext _context, ILogger<AthorEntity> _logger
         public async Task<List<AthorEntity>> GetAthorsAsync()
         {
             try
+            {
+                var athors = await _context.Athors.ToListAsync();
+                if(athors == null)
                 {
-                    var athors = await _context.Athors.ToListAsync();
-                    if(athors == null)
-                    {
-                        throw new KeyNotFoundException($"Autores não foram encontradas.");
-                    }
-                    return athors;
+                    throw new KeyNotFoundException($"Autores não foram encontradas.");
                 }
-                catch(Exception ex)
-                {
-                    _logger.LogError($"Ocorreu um ao obter os autores. Erro: {ex.Message}");
-                    return null!; 
-                }
+                return athors;
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"Ocorreu um ao obter os autores. Erro: {ex.Message}");
+                return null!; 
+            }
         }
     #endregion </Get>
 
