@@ -12,6 +12,7 @@
 #region <Prasentation>
     global using LeiaJa.Presentation.Infrastructure.Extensions;
     global using LeiaJa.Presentation.Domain.Pagination;
+    global using LeiaJa.Presentation.Domain.Model;
     global using LeiaJa.Presentation.Features.MiddleWare;
 #endregion </Prasentation>
 

@@ -44,14 +44,14 @@ public class BooksController(IBookService _service) : ControllerBase
 
     #region <Create>
             [HttpPost("CreateBook"), EndpointSummary("Create Books On Database")]
-            public async Task<ActionResult> CreateBook([FromBody] BookPostDTO book, [FromQuery]List<int> categoryId, [FromQuery]List<int> athorId )
+            public async Task<ActionResult> CreateBook(BookPostModel book)
             {
                 try
                 {
                     if(book == null)
                         return BadRequest("Não deve ser vazia");
 
-                    var autor = await _service.CreateBookAsync(book, categoryId, athorId);
+                    var autor = await _service.CreateBookAsync(book.Book, book.CategoriaId, book.AthorId);
                     return Ok(autor);
                 }
                 catch
