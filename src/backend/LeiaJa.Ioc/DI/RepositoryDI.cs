@@ -7,6 +7,7 @@ public static class RepositoryDI
         services.AddScoped<IDashboardRepository, DashboardRepository>();
         services.AddScoped<IAthorRepository, AthorRepository>();
         services.AddScoped<IBookRepository, BookRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
     }

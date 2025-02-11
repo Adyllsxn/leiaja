@@ -8,6 +8,7 @@ public class DashboardRepository(AppDbContext _context) : IDashboardRepository
             quantityItems.CategoryItems = await _context.Categories.CountAsync();
             quantityItems.AthorItems = await _context.Athors.CountAsync();
             quantityItems.BookItems = await _context.Books.CountAsync();
+            quantityItems.UserItems = await _context.Users.CountAsync();
 
             return quantityItems;
         }

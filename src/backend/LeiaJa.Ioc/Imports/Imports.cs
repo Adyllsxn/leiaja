@@ -21,6 +21,7 @@
     global using LeiaJa.Application.UseCase.DashboardUseCase;
     global using LeiaJa.Application.UseCase.AthorUseCase;
     global using LeiaJa.Application.UseCase.BookUseCase;
+    global using LeiaJa.Application.UseCase.UserUseCase;
     global using LeiaJa.Application.Mapping;
     global using LeiaJa.Application.Interfaces;
     global using LeiaJa.Application.Services;

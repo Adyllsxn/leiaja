@@ -7,6 +7,8 @@ public static class ServiceDI
         services.AddScoped<IDashboardService, DashboardService>();
         services.AddScoped<IAthorService, AthorService>();
         services.AddScoped<IBookService, BookService>();
+        services.AddScoped<IUserService, UserService>();
+        
         return services;
     }
 }

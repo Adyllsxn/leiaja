@@ -34,5 +34,10 @@ public class DomainToDTOProfile : Profile
             CreateMap<BookEntity, BookPostDTO>().ReverseMap();
 
         #endregion </Book>
+
+        #region  <User>
+            CreateMap<UserEntity, UserDto>().ReverseMap();
+            CreateMap<UserEntity, UserPostDto>().ReverseMap();
+        #endregion </User>
     }
 }
