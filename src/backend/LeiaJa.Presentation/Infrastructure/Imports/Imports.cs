@@ -11,14 +11,10 @@
 
 #region <Prasentation>
     global using LeiaJa.Presentation.Infrastructure.Extensions;
-    global using LeiaJa.Presentation.Domain.Pagination;
-    global using LeiaJa.Presentation.Domain.Model;
+    global using LeiaJa.Presentation.Domain.Model.Book;
     global using LeiaJa.Presentation.Features.MiddleWare;
 #endregion </Prasentation>
 
-#region <Domain>
-    global using LeiaJa.Domain.Interfaces;
-#endregion </Domain>
 #region <Ioc
     global using LeiaJa.Ioc.DI;
 #endregion </Ioc>

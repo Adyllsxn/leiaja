@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace LeiaJa.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class CREATEMIGRATIONS : Migration
+    public partial class CREATEMIGRATION : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -60,7 +60,7 @@ namespace LeiaJa.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "TBL_USER",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -75,7 +75,7 @@ namespace LeiaJa.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_TBL_USER", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -157,7 +157,7 @@ namespace LeiaJa.Infrastructure.Migrations
                 name: "TBL_BOOK_CATEGORY");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "TBL_USER");
 
             migrationBuilder.DropTable(
                 name: "TBL_ATHOR");

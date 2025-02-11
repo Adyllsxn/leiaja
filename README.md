@@ -107,27 +107,27 @@ A estrutura do projeto segue uma organização modular e de fácil manutenção:
 
 ```plaintext
 LeiaJa/
-├── src/                      # Código-fonte principal
-│   ├── backend/              # Código do backend
-│   │   ├── LeiaJa.Presentation/   # Camada de apresentação (API)
-│   │   ├── LeiaJa.Application/    # Regras de negócios e serviços
-│   │   ├── LeiaJa.Domain/         # Entidades de domínio e validações
-│   │   ├── LeiaJa.Infrastructure/ # Acesso a dados e integração com o banco de dados
-│   │   ├── LeiaJa.IoC/            # Configuração de injeção de dependências
-│   ├── frontend/              # Código do frontend
-│   │   ├── LeiaJa.Web/         # Interface do usuário (Blazor)
-├── test/                      # Projetos de testes
-│   ├── LeiaJa.UnitTest/        # Testes de unidade
-│   ├── LeiaJa.IntegrationTest/        # Testes de integração
-├── docs/                      # Documentação adicional do projeto
-│   ├── Arquitetura.md          # Detalhes sobre a arquitetura do projeto
-│   ├── API.md                  # Documentação da API (endpoints, contratos)
-│   ├── GuiaDeInstalação.md     # Instruções de configuração do ambiente
-│   ├── ROADMAP.md              # Planejamento de funcionalidades futuras
-├── .github/                   # Configuração para GitHub Actions e workflows
-│   ├── workflows/              # Automatização (ex: GitHub Pages, CI/CD)
-├── README.md                  # Documentação principal do projeto
-├── LeiaJa.sln                 # Solução do projeto
+├── src/                         # Código-fonte principal
+│   ├── backend/                 # Código do backend
+│   │   ├── LeiaJa.Presentation/    # Camada de apresentação (API)
+│   │   ├── LeiaJa.Application/     # Regras de negócios e serviços
+│   │   ├── LeiaJa.Domain/          # Entidades de domínio e validações
+│   │   ├── LeiaJa.Infrastructure/  # Acesso a dados e integração com o banco de dados
+│   │   ├── LeiaJa.IoC/             # Configuração de injeção de dependências
+│   ├── frontend/               # Código do frontend
+│   │   ├── LeiaJa.Web/             # Interface do usuário (Blazor)
+├── test/                       # Projetos de testes
+│   ├── LeiaJa.UnitTest/            # Testes de unidade
+│   ├── LeiaJa.IntegrationTest/     # Testes de integração
+├── docs/                       # Documentação adicional do projeto
+│   ├── Arquitetura.md             # Detalhes sobre a arquitetura do projeto
+│   ├── API.md                     # Documentação da API (endpoints, contratos)
+│   ├── GuiaDeInstalação.md        # Instruções de configuração do ambiente
+│   ├── ROADMAP.md                 # Planejamento de funcionalidades futuras
+├── .github/                    # Configuração para GitHub Actions e workflows
+│   ├── workflows/                 # Automatização (ex: GitHub Pages, CI/CD)
+├── README.md                   # Documentação principal do projeto
+├── LeiaJa.sln                  # Solução do projeto
 
 
 ---

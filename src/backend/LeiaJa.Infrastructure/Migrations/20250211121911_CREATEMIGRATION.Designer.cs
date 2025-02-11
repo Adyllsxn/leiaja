@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeiaJa.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250204111838_CREATEMIGRATIONS")]
-    partial class CREATEMIGRATIONS
+    [Migration("20250211121911_CREATEMIGRATION")]
+    partial class CREATEMIGRATION
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -210,7 +210,7 @@ namespace LeiaJa.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("TBL_USER", (string)null);
                 });
 
             modelBuilder.Entity("LeiaJa.Domain.Entities.BookAthorEntity", b =>

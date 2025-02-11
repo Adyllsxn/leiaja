@@ -17,6 +17,5 @@
 
 #region <Infrastructure>
     global using LeiaJa.Infrastructure.Context;
-    global using LeiaJa.Infrastructure.Helper;
 #endregion </Infrastructure>
 

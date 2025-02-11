@@ -1,7 +1,7 @@
 namespace LeiaJa.Application.UseCase.AthorUseCase;
 public class DeleteAthorUseCase(IAthorRepository _repository, IMapper _mapper)
 {
-    public async Task<ResponseModel<AthorDTO>> DeleteAthorAsync(int athorId)
+        public async Task<ResponseModel<AthorDTO>> DeleteAthorAsync(int athorId)
         {
             ResponseModel<AthorDTO> response = new();
             try

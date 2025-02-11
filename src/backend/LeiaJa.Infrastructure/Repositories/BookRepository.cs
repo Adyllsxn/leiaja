@@ -129,7 +129,7 @@ public class BookRepository(AppDbContext _context, ILogger<BookEntity> _logger) 
         {
             try
             {
-                return await _context.Books.AsNoTracking().Include(x => x.BookAthors).Include(x => x.BookCategories).Where(predicate).ToListAsync();
+                return await _context.Books.AsNoTracking().Include(b => b.BookAthors).ThenInclude(ba => ba.Athor).Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Where(predicate).ToListAsync();
             }
             catch(Exception ex)
             {

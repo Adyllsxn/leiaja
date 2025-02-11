@@ -1,7 +1,7 @@
 namespace LeiaJa.Application.UseCase.AthorUseCase;
 public class UpdateAthorUseCase(IAthorRepository _repository, IMapper _mapper)
 {
-    public async Task<ResponseModel<AthorDTO>> UpdateAthorAsync(AthorDTO athorDTO)
+        public async Task<ResponseModel<AthorDTO>> UpdateAthorAsync(AthorDTO athorDTO)
         {
             ResponseModel<AthorDTO> response = new();
             try

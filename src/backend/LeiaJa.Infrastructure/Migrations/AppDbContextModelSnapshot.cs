@@ -207,7 +207,7 @@ namespace LeiaJa.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("TBL_USER", (string)null);
                 });
 
             modelBuilder.Entity("LeiaJa.Domain.Entities.BookAthorEntity", b =>
